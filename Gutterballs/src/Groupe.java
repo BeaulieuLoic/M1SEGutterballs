@@ -10,9 +10,8 @@ public class Groupe {
 	private SalleDanse salleDanse;
 	private StockChaussure stockChaussure;
 
-	public Groupe(PisteJeu pisteJeu, SalleDanse salleDanse,
+	public Groupe(SalleDanse salleDanse,
 			StockChaussure stockChaussure) {
-		this.pisteJeu = pisteJeu;
 		this.salleDanse = salleDanse;
 		this.stockChaussure = stockChaussure;
 		listeClient = new LinkedList<>();
@@ -20,6 +19,10 @@ public class Groupe {
 
 	public void addClient(Client client) {
 			listeClient.add(client);
+	}
+	
+	public void setPisteJeu(PisteJeu pisteJeu){
+		this.pisteJeu=pisteJeu;
 	}
 
 	public boolean isFull(){
