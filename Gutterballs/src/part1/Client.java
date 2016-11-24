@@ -1,3 +1,4 @@
+package part1;
 public class Client {
 
 	private String id;
@@ -31,6 +32,10 @@ public class Client {
 	@Override
 	public String toString() {
 		return "Client [id=" + id + "]";
+	}
+	
+	public boolean equals(Client cl){
+		return id.equals(cl.id);
 	}
 
 }

@@ -1,7 +1,8 @@
+package part1;
 public abstract class Chaussure {
 
 	protected Client client;
-	protected Boolean estPorte;
+	protected boolean estPorte;
 
 	public Chaussure() {
 		estPorte = false;
@@ -15,11 +16,11 @@ public abstract class Chaussure {
 		this.client = client;
 	}
 
-	public Boolean getEstPorte() {
+	public boolean getEstPorte() {
 		return estPorte;
 	}
 
-	public void setEstPorte(Boolean estPorte) {
+	public void setEstPorte(boolean estPorte) {
 		this.estPorte = estPorte;
 	}
 
