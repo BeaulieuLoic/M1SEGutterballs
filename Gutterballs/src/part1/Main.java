@@ -11,11 +11,24 @@ public class Main {
 		StockChaussure stockChaussure = new StockChaussure();
 		Guichet guichet = new Guichet(salleDanse, stockChaussure);
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			lc.add(new Client(i, guichet));
 		}
-
-		System.out.println(lc.toString());
+		
+		for (Client client : lc) {
+			client.start();
+		}
+		
+		
+		
+		for (Client client : lc) {
+			try {
+				client.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 	}
 

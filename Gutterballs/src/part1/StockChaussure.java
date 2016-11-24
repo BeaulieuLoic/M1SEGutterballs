@@ -10,19 +10,40 @@ public class StockChaussure {
 		listeChaussureCLient = new HashMap<>();
 	}	
 		
-	public synchronized void changerChaussureVilleVersBowling(Client cl){
+	/**
+	 * Change le type des chaussures du client.
+	 * Ville vers bowling.
+	 */
+	public synchronized void changeVtoB(Client cl){
 		if (cl.getChaussure() instanceof ChaussureVille) {
 			ChaussureVille chaussureClient =  (ChaussureVille) cl.getChaussure();
 			listeChaussureCLient.put(cl,chaussureClient);
 			cl.setChaussure(new ChaussureBowling());// pour la v3 prendre une chaussure dans la liste, ou attendre s'il n'y en a plus
+			
+			if (cl.getGroupe().isChausseBowling()) {
+				System.out.println(cl.getGroupe()+" est chauss√©.");
+				notifyAll();
+			}else{
+				while(!cl.getGroupe().isChausseBowling()){
+					try {
+						wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
 		}else{
-			System.out.println("Erreur stockChaussure, le client veut prendre des chaussures de bowling alors qu'il n'a† pas de chaussure de ville");
+			System.out.println("Erreur stockChaussure, le client veut prendre des chaussures de bowling alors qu'il n'a pas de chaussure de ville");
 		}
 	}
-
-	public synchronized void changerChaussureBowlingVersVille(Client cl){
+	/**
+	 * Change le type des chaussures du client.
+	 * Bowling vers Ville.
+	 */
+	public synchronized void changeBtoV(Client cl){
 		if (cl.getChaussure() instanceof ChaussureBowling) {
-			ChaussureBowling chaussureClient =  (ChaussureBowling) cl.getChaussure();
+			//ChaussureBowling chaussureClient =  (ChaussureBowling) cl.getChaussure();//pour v2
 			cl.setChaussure(listeChaussureCLient.get(cl));
 		}else{
 			System.out.println("Erreur stockChaussure, le client veut prendre des chaussures de ville alors qu'il n'a pas de chaussure de bowling");
