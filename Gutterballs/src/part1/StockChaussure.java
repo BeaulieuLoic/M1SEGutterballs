@@ -20,6 +20,13 @@ public class StockChaussure {
 			listeChaussureCLient.put(cl,chaussureClient);
 			cl.setChaussure(new ChaussureBowling());// pour la v3 prendre une chaussure dans la liste, ou attendre s'il n'y en a plus
 			
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			if (cl.getGroupe().isChausseBowling()) {
 				System.out.println(cl.getGroupe()+" est chaussé.");
 				notifyAll();

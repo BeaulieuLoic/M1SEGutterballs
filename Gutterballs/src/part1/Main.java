@@ -10,8 +10,16 @@ public class Main {
 		SalleDanse salleDanse = new SalleDanse();
 		StockChaussure stockChaussure = new StockChaussure();
 		Guichet guichet = new Guichet(salleDanse, stockChaussure);
+		
+		Bowling bowling = new Bowling(salleDanse);
 
-		for (int i = 0; i < 5; i++) {
+		
+		for (int i = 0; i < 1; i++) {
+			bowling.addPiste(new PisteJeu());
+		}
+		
+		
+		for (int i = 0; i < 6; i++) {
 			lc.add(new Client(i, guichet));
 		}
 		

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Groupe {
 
-	private static final int nbMaxClient = 5;
+	private static final int nbMaxClient = 3;
 
 	private int id;
 	private List<Client> listeClient;
@@ -53,5 +53,19 @@ public class Groupe {
 	public StockChaussure getStockChaussure() {
 		return stockChaussure;
 	}
+	
+	public SalleDanse getSalleDanse(){
+		return salleDanse;
+	}
 
+	public synchronized boolean isInSalle(){
+		for (Client client : listeClient) {
+			if (!(client.isInSalle())) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
 }

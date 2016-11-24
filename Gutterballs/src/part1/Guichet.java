@@ -17,8 +17,15 @@ public class Guichet {
 		if (!groupe.isFull()) {
 			groupe.addClient(client);
 			client.setGroupe(groupe);
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			if (groupe.isFull()) {
-				System.out.println(groupe + " est prêt.");
+				System.out.println(groupe + " à finit d'être crée.");
 				notifyAll();
 
 			} else {
@@ -31,6 +38,13 @@ public class Guichet {
 				}
 			}
 		} else {
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			nbGrp++;
 			groupe = new Groupe(nbGrp, salleDanse, stockChaussure);
 			groupe.addClient(client);

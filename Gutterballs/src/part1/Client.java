@@ -6,11 +6,13 @@ public class Client extends Thread {
 	private Chaussure chaussure;
 	private Groupe groupe;
 	private Guichet guichet;
+	private boolean estDansSalleDanse;
 
 	public Client(int id, Guichet guichet) {
 		this.id = id;
 		this.chaussure = new ChaussureVille();
 		this.guichet = guichet;
+		estDansSalleDanse = false;
 	}
 
 	public Chaussure getChaussure() {
@@ -37,6 +39,20 @@ public class Client extends Thread {
 	public boolean equals(Client cl) {
 		return id == cl.id;
 	}
+	
+	public void inSalle(){
+		estDansSalleDanse = true;
+		groupe.getSalleDanse().waitGroupe(groupe);
+	}
+	
+	public void outSalle(){
+		estDansSalleDanse = false;
+	}
+	
+	public boolean isInSalle(){
+		return estDansSalleDanse;
+	}
+	
 
 	public void run() {
 		System.out.println(this + "-> Guichet");
@@ -47,6 +63,12 @@ public class Client extends Thread {
 		System.out.println(this +" "+ groupe + " à finit d'attendre dans stockChaussure. -> go SalleDeDanse");
 
 		// go to salle de danse
+		inSalle();
+		System.out.println(this +" "+ groupe + " à finit d'attendre dans salleDanse. -> attend piste de jeu");
+		
+		
+		
+		
 		// attends d'etre notifié par soit un membre de son groupe soit par le
 		// bowling qu'une place est libre
 		// go to piste de jeu
