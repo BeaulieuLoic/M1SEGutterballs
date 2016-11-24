@@ -1,15 +1,14 @@
 package part1;
-public class Client {
+public class Client extends Thread{
 
-	private String id;
+	private int id;
 	private Chaussure chaussure;
 	private Groupe groupe;
 	private Guichet guichet;
 
-	public Client(String id,Guichet guichet) {
+	public Client(int id,Guichet guichet) {
 		this.id = id;
 		this.chaussure = new ChaussureVille();
-		chaussure.setClient(this);
 		this.guichet=guichet;
 	}	
 	
@@ -35,7 +34,7 @@ public class Client {
 	}
 	
 	public boolean equals(Client cl){
-		return id.equals(cl.id);
+		return id==cl.id;
 	}
 
 }
