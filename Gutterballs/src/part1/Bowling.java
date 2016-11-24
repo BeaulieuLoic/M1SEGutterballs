@@ -17,4 +17,14 @@ public class Bowling {
 		listPisteJeu.add(pj);
 	}
 	
+	public PisteJeu getPisteLibre(){
+		for (PisteJeu pisteJeu : listPisteJeu) {
+			if (!pisteJeu.estOccupe()) {
+				return pisteJeu;
+			}
+		}
+		return null;//faire dormir le bowling si pas de piste libre et réveiller quand une piste devient libre
+		
+	}
+	
 }
