@@ -1,4 +1,7 @@
-package part1;
+package part1.monitor;
+
+import part1.Groupe;
+import part1.thread.Client;
 
 public class Guichet {
 
@@ -18,14 +21,14 @@ public class Guichet {
 			groupe.addClient(client);
 			client.setGroupe(groupe);
 			try {
-				Thread.sleep(200);
+				Thread.sleep(50);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
 			if (groupe.isFull()) {
-				System.out.println(groupe + " Ã  finit d'Ãªtre crÃ©e.");
+				System.out.println(groupe + " Ã  finit d'être créé.");
 				notifyAll();
 
 			} else {
@@ -49,6 +52,13 @@ public class Guichet {
 			groupe = new Groupe(nbGrp, salleDanse, stockChaussure);
 			groupe.addClient(client);
 			client.setGroupe(groupe);
+			while (!groupe.isFull()) {
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}

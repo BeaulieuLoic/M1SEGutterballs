@@ -1,9 +1,12 @@
-package part1;
+package part1.thread;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bowling {
+import part1.PisteJeu;
+import part1.monitor.SalleDanse;
+
+public class Bowling extends Thread{
 
 	private SalleDanse salleDanse;
 	private List<PisteJeu> listPisteJeu;
@@ -24,7 +27,16 @@ public class Bowling {
 			}
 		}
 		return null;//faire dormir le bowling si pas de piste libre et réveiller quand une piste devient libre
-		
+	}
+	
+	public void nouvellePisteDispo(){
+		salleDanse.nouvellePisteDispo();
+	}
+	
+	public void run() {
+		while(true){
+
+		}	
 	}
 	
 }

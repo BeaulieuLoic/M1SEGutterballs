@@ -3,6 +3,10 @@ package part1;
 import java.util.LinkedList;
 import java.util.List;
 
+import part1.monitor.SalleDanse;
+import part1.monitor.StockChaussure;
+import part1.thread.Client;
+
 public class Groupe {
 
 	private static final int nbMaxClient = 3;
@@ -30,6 +34,9 @@ public class Groupe {
 	 */
 	public void setPisteJeu(PisteJeu pisteJeu) {
 		this.pisteJeu = pisteJeu;
+		for (Client client : listeClient) {
+			client.setPisteJeu(pisteJeu);
+		}
 	}
 
 	public synchronized boolean isFull() {
@@ -46,7 +53,7 @@ public class Groupe {
 	}
 	
 	public String toString() {
-		return "Groupe [id=" + id + "]";
+		return "grp [id=" + id + "]";
 
 	}
 
@@ -57,6 +64,10 @@ public class Groupe {
 	public SalleDanse getSalleDanse(){
 		return salleDanse;
 	}
+	
+	public PisteJeu getPisteJeu(){
+		return pisteJeu;
+	}
 
 	public synchronized boolean isInSalle(){
 		for (Client client : listeClient) {
@@ -64,8 +75,27 @@ public class Groupe {
 				return false;
 			}
 		}
+		
 		return true;
 	}
+	
+	public synchronized boolean isInPiste(){
+		for (Client client : listeClient) {
+			if (!(client.isInPiste())) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public synchronized boolean gotPisteJeu(){
+		return pisteJeu != null;
+	}
+	
+	public synchronized void prevenirPartieFinit(){
+		listeClient.get(0).prevenirBowlingPartieFinit();
+	}
+	
 	
 	
 }

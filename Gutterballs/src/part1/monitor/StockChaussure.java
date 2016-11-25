@@ -1,7 +1,11 @@
-package part1;
+package part1.monitor;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import part1.ChaussureBowling;
+import part1.ChaussureVille;
+import part1.thread.Client;
 
 public class StockChaussure {
 	private Map<Client,ChaussureVille> listeChaussureCLient;
