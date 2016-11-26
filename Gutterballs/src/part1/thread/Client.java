@@ -2,9 +2,9 @@ package part1.thread;
 
 import part1.Chaussure;
 import part1.ChaussureVille;
-import part1.PisteJeu;
 import part1.monitor.Groupe;
 import part1.monitor.Guichet;
+import part1.monitor.PisteJeu;
 import part1.monitor.SalleDanse;
 import part1.monitor.StockChaussure;
 import part1.monitorAndThread.Bowling;
@@ -143,7 +143,6 @@ public class Client extends Thread {
 		
 		// go exit
 	}
-	
 	
 	public boolean equals(Client cl) {
 		return id == cl.id;

@@ -3,7 +3,6 @@ package part1.monitor;
 import java.util.LinkedList;
 import java.util.List;
 
-import part1.PisteJeu;
 import part1.monitorAndThread.Bowling;
 
 public class SalleDanse {

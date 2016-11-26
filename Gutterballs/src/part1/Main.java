@@ -3,6 +3,7 @@ package part1;
 import java.util.LinkedList;
 
 import part1.monitor.Guichet;
+import part1.monitor.PisteJeu;
 import part1.monitor.SalleDanse;
 import part1.monitor.StockChaussure;
 import part1.monitorAndThread.Bowling;

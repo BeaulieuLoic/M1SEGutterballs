@@ -1,6 +1,5 @@
-package part1;
+package part1.monitor;
 
-import part1.monitor.Groupe;
 
 public class PisteJeu {
 	private int id;

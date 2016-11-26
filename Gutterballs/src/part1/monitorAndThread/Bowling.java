@@ -3,7 +3,7 @@ package part1.monitorAndThread;
 import java.util.ArrayList;
 import java.util.List;
 
-import part1.PisteJeu;
+import part1.monitor.PisteJeu;
 import part1.monitor.SalleDanse;
 
 public class Bowling extends Thread{

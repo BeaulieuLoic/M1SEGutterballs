@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import part1.ChaussureBowling;
-import part1.PisteJeu;
 import part1.thread.Client;
 
 public class Groupe {
