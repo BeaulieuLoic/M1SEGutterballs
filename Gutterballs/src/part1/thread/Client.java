@@ -2,10 +2,12 @@ package part1.thread;
 
 import part1.Chaussure;
 import part1.ChaussureVille;
-import part1.Groupe;
 import part1.PisteJeu;
+import part1.monitor.Groupe;
 import part1.monitor.Guichet;
 import part1.monitor.SalleDanse;
+import part1.monitor.StockChaussure;
+import part1.monitorAndThread.Bowling;
 
 public class Client extends Thread {
 
@@ -17,11 +19,12 @@ public class Client extends Thread {
 	private boolean estDansSalleDanse;
 	private boolean estDansPisteJeu;
 	
+	private StockChaussure stockChaussure;
 	private PisteJeu pisteJeu;
 	private SalleDanse salleDanse;
 	private Bowling bowling;
 
-	public Client(int id, Guichet guichet, SalleDanse sd, Bowling bl) {
+	public Client(int id, Guichet guichet, SalleDanse sd, Bowling bl, StockChaussure stock) {
 		this.id = id;
 		this.chaussure = new ChaussureVille();
 		this.guichet = guichet;
@@ -31,6 +34,8 @@ public class Client extends Thread {
 		estDansSalleDanse = false;
 		estDansPisteJeu = false;
 		
+		
+		stockChaussure = stock;
 		bowling = bl;
 	}
 
@@ -84,45 +89,58 @@ public class Client extends Thread {
 		return estDansPisteJeu;
 	}
 	
-	// ne pas appeler car pose probl�me ()
+	// ne pas appeler car pose probl�me (voir waitgroueandPLay)
 	public void outPiste(){
 		estDansPisteJeu = false;
 	}
 	
 	public void prevenirBowlingPartieFinit() {
 		bowling.nouvellePisteDispo();
-		
 	}
 	
+	
+	public void payer(){
+		
+	}
 
 	public void run() {
 		//System.out.println(this + "-> Guichet");
 		guichet.addToGroup(this);// go to guichet et attendre
-		//System.out.println(this +" "+ groupe + " à finit d'attendre dans Guichet. -> go StockChaussure ");
+		
+		groupe.waitGroupeFull();
+		
+		
+		
+		System.out.println(this +" "+ groupe + " à finit d'attendre dans Guichet. -> go StockChaussure ");
 		// go to salle des chaussures
-		groupe.getStockChaussure().changeVtoB(this); // se chausse
-		//System.out.println(this +" "+ groupe + " à finit d'attendre dans stockChaussure. -> go SalleDeDanse");
+		stockChaussure.changeVtoB(this); // se chausse
+		System.out.println(this +" "+ groupe + " à finit d'attendre dans stockChaussure. -> go SalleDeDanse");
 
 		// go to salle de danse et attend que tout les membres du groupe y soit
 		goToSalle();
-		salleDanse.waitGroupe(groupe);
-		//System.out.println(this +" "+ groupe + " à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu");		
+		groupe.waitGroupeSalleDanse();
+		System.out.println(this +" "+ groupe + " à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu");		
 		// attends d'etre notifié par soit un membre de son groupe soit par le
 		// bowling qu'une place est libre
 		salleDanse.waitPisteDispo(groupe);
-		//System.out.println(this +" "+ groupe + "  piste de jeu trouver. -> go to pisteDeJeux");	
+		System.out.println(this +" "+ groupe + "  piste de jeu trouver. -> go to pisteDeJeux");	
 		// go to piste de jeu
 		goToPisteJeu();
 
 		// attendre que son groupe soit au complet sur la piste puis joue
 		pisteJeu.waitGroupeAndPlay(groupe);
-		//System.out.println(this +" "+ groupe + " à finit d'attendre son groupe dans pisteJeux. -> joue une partie");		
+		System.out.println(this +" "+ groupe + " à finit d'attendre son groupe dans pisteJeux. -> joue une partie");		
 		
 		// Jouer :D (le dernier client arriv� dans pisteJeu lance la partie)
 		// Soit prevenir le bowling que la partie est terminée soit il se barre
 		// go to guichet
 		// Payer D:
+		payer();
+		System.out.println(this +" a finit de payer -> go StockChaussure");		
+		
 		// go to salle des chaussures
+		stockChaussure.changeBtoV(this);
+		
 		// go exit
 	}
 	

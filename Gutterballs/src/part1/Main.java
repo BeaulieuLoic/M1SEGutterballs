@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import part1.monitor.Guichet;
 import part1.monitor.SalleDanse;
 import part1.monitor.StockChaussure;
-import part1.thread.Bowling;
+import part1.monitorAndThread.Bowling;
 import part1.thread.Client;
 
 public class Main {
@@ -21,25 +21,21 @@ public class Main {
 		salleDanse.setBowling(bowling);
 
 		
-		for (int i = 0; i < 2; i++) {
-			bowling.addPiste(new PisteJeu());
+		for (int i = 0; i < 1; i++) {
+			bowling.addPiste(new PisteJeu(i));
 		}
 		
 		
-		for (int i = 0; i < 6; i++) {
-			lc.add(new Client(i, guichet, salleDanse,bowling));
-		}
-		
-		
-		
+		for (int i = 0; i < 3; i++) {
+			lc.add(new Client(i, guichet, salleDanse,bowling, stockChaussure));
+		}		
 		
 		for (Client client : lc) {
 			client.start();
 		}
-		//bowling.start();
 		
-		
-		
+		bowling.setDaemon(true);//quand plus de client le bowling ferme
+		bowling.start();
 		
 		for (Client client : lc) {
 			try {
@@ -50,12 +46,8 @@ public class Main {
 			}
 		}
 		
-		/*try {
-			bowling.join();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		System.out.println("Stat :");
+		System.out.println(bowling.getStat());
 
 	}
 

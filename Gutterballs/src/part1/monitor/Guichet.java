@@ -1,6 +1,5 @@
 package part1.monitor;
 
-import part1.Groupe;
 import part1.thread.Client;
 
 public class Guichet {
@@ -17,50 +16,30 @@ public class Guichet {
 	}
 
 	public synchronized void addToGroup(Client client) {
-		if (!groupe.isFull()) {
-			groupe.addClient(client);
-			client.setGroupe(groupe);
-			try {
-				Thread.sleep(50);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-			if (groupe.isFull()) {
-				System.out.println(groupe + " Ã  finit d'être créé.");
-				notifyAll();
 
-			} else {
-				while (!groupe.isFull()) {
-					try {
-						wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		} else {
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
+		groupe.addClient(client);
+		client.setGroupe(groupe);
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		if (groupe.isFull()) {
+			System.out.println(groupe + " Ã  finit d'être créé.");
 			nbGrp++;
 			groupe = new Groupe(nbGrp, salleDanse, stockChaussure);
-			groupe.addClient(client);
-			client.setGroupe(groupe);
-			while (!groupe.isFull()) {
-				try {
-					wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
 		}
+	}
 
+	public synchronized void fairePayerClient(Client cl) {
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 }

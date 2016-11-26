@@ -1,10 +1,21 @@
 package part1;
 
-public class PisteJeu {
-	private Groupe groupe;
+import part1.monitor.Groupe;
 
-	public PisteJeu() {
+public class PisteJeu {
+	private int id;
+	private Groupe groupe;
+	private int nbPartieJouer;
+
+	public PisteJeu(int id) {
 		groupe = null;
+		nbPartieJouer = 0;
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "PisteJeu [id=" + id + ", nombre de partie jouée =" + nbPartieJouer + "]";
 	}
 
 	public void lancerPartie() {
@@ -23,11 +34,16 @@ public class PisteJeu {
 	public void setGroupe(Groupe grp) {
 		groupe = grp;
 	}
+	
+	public int getNbPartieJouer(){
+		return nbPartieJouer;
+	}
 
 	public void partieTermine() {
 		Groupe tmp = groupe;
 		groupe = null;
 		tmp.prevenirPartieFinit();
+		nbPartieJouer++;
 	}
 
 	public synchronized void waitGroupeAndPlay(Groupe grp) {

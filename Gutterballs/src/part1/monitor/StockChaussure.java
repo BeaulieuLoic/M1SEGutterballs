@@ -31,19 +31,6 @@ public class StockChaussure {
 				e1.printStackTrace();
 			}
 			
-			if (cl.getGroupe().isChausseBowling()) {
-				System.out.println(cl.getGroupe()+" est chaussé.");
-				notifyAll();
-			}else{
-				while(!cl.getGroupe().isChausseBowling()){
-					try {
-						wait();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
 		}else{
 			System.out.println("Erreur stockChaussure, le client veut prendre des chaussures de bowling alors qu'il n'a pas de chaussure de ville");
 		}
@@ -56,6 +43,13 @@ public class StockChaussure {
 		if (cl.getChaussure() instanceof ChaussureBowling) {
 			//ChaussureBowling chaussureClient =  (ChaussureBowling) cl.getChaussure();//pour v2
 			cl.setChaussure(listeChaussureCLient.get(cl));
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}else{
 			System.out.println("Erreur stockChaussure, le client veut prendre des chaussures de ville alors qu'il n'a pas de chaussure de bowling");
 		}
