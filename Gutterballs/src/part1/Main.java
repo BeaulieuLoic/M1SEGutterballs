@@ -2,6 +2,7 @@ package part1;
 
 import java.util.LinkedList;
 
+import part1.monitor.Groupe;
 import part1.monitor.Guichet;
 import part1.monitor.PisteJeu;
 import part1.monitor.SalleDanse;
@@ -16,18 +17,18 @@ public class Main {
 		LinkedList<Client> lc = new LinkedList<>();
 		SalleDanse salleDanse = new SalleDanse();
 		StockChaussure stockChaussure = new StockChaussure();
-		Guichet guichet = new Guichet(salleDanse, stockChaussure);
+		Guichet guichet = new Guichet(salleDanse);
 		
 		Bowling bowling = new Bowling(salleDanse);
 		salleDanse.setBowling(bowling);
 
 		
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 5; i++) {
 			bowling.addPiste(new PisteJeu(i));
 		}
 		
 		
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 30*Groupe.nbMaxClient; i++) {
 			lc.add(new Client(i, guichet, salleDanse,bowling, stockChaussure));
 		}		
 		

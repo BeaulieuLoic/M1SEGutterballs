@@ -6,13 +6,11 @@ public class Guichet {
 
 	private Groupe groupe;
 	private SalleDanse salleDanse;
-	private StockChaussure stockChaussure;
 	private static int nbGrp = 0;
 
-	public Guichet(SalleDanse salleDanse, StockChaussure stockChaussure) {
+	public Guichet(SalleDanse salleDanse) {
 		this.salleDanse = salleDanse;
-		this.stockChaussure = stockChaussure;
-		groupe = new Groupe(nbGrp, salleDanse, stockChaussure);
+		groupe = new Groupe(nbGrp, salleDanse);
 	}
 
 	public synchronized void addToGroup(Client client) {
@@ -29,7 +27,7 @@ public class Guichet {
 		if (groupe.isFull()) {
 			System.out.println(groupe + " Ã  finit d'être créé.");
 			nbGrp++;
-			groupe = new Groupe(nbGrp, salleDanse, stockChaussure);
+			groupe = new Groupe(nbGrp, salleDanse);
 		}
 	}
 

@@ -61,9 +61,8 @@ public class PisteJeu {
 			System.out.println(grp + " est dans pisteDeJeu. debut de la partie ...");
 			lancerPartie();
 			partieTermine();
-			System.out.println(grp + " partie finit.");
+			System.out.println(grp + " partie finit. "+this);
 			notifyAll();
 		}
-
 	}
 }

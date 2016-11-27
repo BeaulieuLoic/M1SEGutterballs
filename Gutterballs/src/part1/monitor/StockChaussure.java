@@ -25,7 +25,7 @@ public class StockChaussure {
 			cl.setChaussure(new ChaussureBowling());// pour la v3 prendre une chaussure dans la liste, ou attendre s'il n'y en a plus
 			
 			try {
-				Thread.sleep(200);
+				Thread.sleep(100);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -44,7 +44,7 @@ public class StockChaussure {
 			//ChaussureBowling chaussureClient =  (ChaussureBowling) cl.getChaussure();//pour v2
 			cl.setChaussure(listeChaussureCLient.get(cl));
 			try {
-				Thread.sleep(200);
+				Thread.sleep(100);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

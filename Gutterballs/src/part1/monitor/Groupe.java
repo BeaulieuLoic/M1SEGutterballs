@@ -8,19 +8,19 @@ import part1.thread.Client;
 
 public class Groupe {
 
-	private static final int nbMaxClient = 3;
+	public static final int nbMaxClient = 3;
 
 	private int id;
 	private List<Client> listeClient;
-	private PisteJeu pisteJeu;
 	private SalleDanse salleDanse;
-	private StockChaussure stockChaussure;
+	
+	private boolean pisteDeJeuAttribuer;
 
-	public Groupe(int id, SalleDanse salleDanse, StockChaussure stockChaussure) {
+	public Groupe(int id, SalleDanse salleDanse) {
 		this.id = id;
 		this.salleDanse = salleDanse;
-		this.stockChaussure = stockChaussure;
 		listeClient = new LinkedList<>();
+		pisteDeJeuAttribuer = false;
 	}
 
 	public synchronized void addClient(Client client) {
@@ -29,10 +29,10 @@ public class Groupe {
 
 	/**
 	 * Pas besoin de synchronized car la méthode n'est appelé qu'une seule
-	 * fois, lors de la création des objets
+	 * fois, lors de la création des objets dans le main
 	 */
 	public void setPisteJeu(PisteJeu pisteJeu) {
-		this.pisteJeu = pisteJeu;
+		pisteDeJeuAttribuer = true;
 		for (Client client : listeClient) {
 			client.setPisteJeu(pisteJeu);
 		}
@@ -51,14 +51,9 @@ public class Groupe {
 		return true;
 	}
 
-	public String toString() {
+	public synchronized String toString() {
 		return "grp [id=" + id + "]";
 
-	}
-
-
-	public PisteJeu getPisteJeu() {
-		return pisteJeu;
 	}
 
 	public synchronized boolean isInSalle() {
@@ -81,7 +76,7 @@ public class Groupe {
 	}
 
 	public synchronized boolean gotPisteJeu() {
-		return pisteJeu != null;
+		return pisteDeJeuAttribuer;
 	}
 
 	public synchronized void prevenirPartieFinit() {
@@ -93,6 +88,7 @@ public class Groupe {
 	 * 
 	 * */
 	public synchronized void waitGroupeSalleDanse() {
+		// if car le dernier client qui arrive va forc�ment passer dans le else
 		if (!isInSalle()) {
 			try {
 				wait();
@@ -107,8 +103,9 @@ public class Groupe {
 		}
 	}
 
+	// utile ???
 	@Override
-	public boolean equals(Object obj) {
+	public synchronized boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
