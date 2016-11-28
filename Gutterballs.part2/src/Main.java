@@ -24,7 +24,7 @@ public class Main {
 		}
 		
 		
-		for (int i = 0; i < 10*Groupe.nbMaxClient; i++) {
+		for (int i = 0; i < 5*Groupe.nbMaxClient; i++) {
 			lc.add(new Client(i, guichet, salleDanse,bowling, stockChaussure));
 		}		
 		

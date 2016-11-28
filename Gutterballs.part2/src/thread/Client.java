@@ -1,5 +1,7 @@
 package thread;
 
+import java.util.List;
+
 import model.*;
 import monitor.*;
 import monitorAndThread.*;
@@ -17,6 +19,8 @@ public class Client extends Thread {
 	private PisteJeu pisteJeu;
 	private SalleDanse salleDanse;
 	private Bowling bowling;
+	
+	private List<Guichet> listGuichet;
 
 	public Client(int id, Guichet guichet, SalleDanse sd, Bowling bl, StockChaussure stock) {
 		this.id = id;
@@ -72,6 +76,7 @@ public class Client extends Thread {
 		boolean afficherClient = false;
 
 		if (afficherClient) {
+			
 			System.out.println(this + "-> Guichet");
 		}
 

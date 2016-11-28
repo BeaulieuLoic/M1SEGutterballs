@@ -2,34 +2,18 @@ package monitor;
 
 import thread.Client;
 
-public class Guichet {
+public class Guichet extends Thread {
 
-	private Groupe groupe;
-	private SalleDanse salleDanse;
+	private CreationGroupe cGroupe;
+	private Client clientAct;
+	
 	private static int nbGrp = 0;
 
-	public Guichet(SalleDanse salleDanse) {
-		this.salleDanse = salleDanse;
-		groupe = new Groupe(nbGrp, salleDanse);
+	public Guichet(CreationGroupe cGrp) {
+		cGroupe = cGrp;
 	}
 
-	public synchronized void addToGroup(Client client) {
 
-		groupe.addClient(client);
-		client.setGroupe(groupe);
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		if (groupe.isFull()) {
-			System.out.println(groupe + " Ã  finit d'être créé.");
-			nbGrp++;
-			groupe = new Groupe(nbGrp, salleDanse);
-		}
-	}
 
 	public synchronized void fairePayerClient(Client cl) {
 		try {
@@ -38,6 +22,21 @@ public class Guichet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+	
+	public synchronized void waitClient(){
+		try {
+			wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void run(){
+		while(true){
+			waitClient();
+		}		
 	}
 
 }

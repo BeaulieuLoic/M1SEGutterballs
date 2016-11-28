@@ -28,15 +28,17 @@ public class SalleDanse {
 	}
 
 	public synchronized boolean reserverPiste(Groupe grp) {
-		PisteJeu piste = bowling.getPisteLibre();
-		if (piste != null) {
-			piste.setGroupe(grp);
-			grp.setPisteJeu(piste);
-			listGroupe.remove(grp);
-			return true;
-		} else {
-			return false;
+		
+		if (grp.equals(listGroupe.get(0))) {
+			PisteJeu piste = bowling.getPisteLibre();
+			if (piste != null) {
+				piste.setGroupe(grp);
+				grp.setPisteJeu(piste);
+				listGroupe.remove(grp);
+				return true;
+			}
 		}
+		return false;
 	}
 
 	public synchronized void waitPisteDispo(Groupe grp) {
