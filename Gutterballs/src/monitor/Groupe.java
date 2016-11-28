@@ -1,10 +1,10 @@
-package part1.monitor;
+package monitor;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import part1.ChaussureBowling;
-import part1.thread.Client;
+import model.ChaussureBowling;
+import thread.Client;
 
 public class Groupe {
 

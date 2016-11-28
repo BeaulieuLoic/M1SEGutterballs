@@ -1,4 +1,5 @@
-package part1;
+package model;
+
 public abstract class Chaussure {
 
 	public Chaussure() {

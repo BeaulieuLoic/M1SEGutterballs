@@ -1,14 +1,10 @@
-package part1;
+
 
 import java.util.LinkedList;
 
-import part1.monitor.Groupe;
-import part1.monitor.Guichet;
-import part1.monitor.PisteJeu;
-import part1.monitor.SalleDanse;
-import part1.monitor.StockChaussure;
-import part1.monitorAndThread.Bowling;
-import part1.thread.Client;
+import monitor.*;
+import monitorAndThread.*;
+import thread.Client;
 
 public class Main {
 

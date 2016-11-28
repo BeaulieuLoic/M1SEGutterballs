@@ -1,10 +1,10 @@
-package part1.monitorAndThread;
+package monitorAndThread;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import part1.monitor.PisteJeu;
-import part1.monitor.SalleDanse;
+import monitor.PisteJeu;
+import monitor.SalleDanse;
 
 public class Bowling extends Thread{
 

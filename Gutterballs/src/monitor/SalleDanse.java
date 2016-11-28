@@ -1,9 +1,9 @@
-package part1.monitor;
+package monitor;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import part1.monitorAndThread.Bowling;
+import monitorAndThread.Bowling;
 
 public class SalleDanse {
 	private List<Groupe> listGroupe;

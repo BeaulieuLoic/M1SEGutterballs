@@ -1,6 +1,6 @@
-package part1.monitor;
+package monitor;
 
-import part1.thread.Client;
+import thread.Client;
 
 public class PisteJeu {
 	private int id;

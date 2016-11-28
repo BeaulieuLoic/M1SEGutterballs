@@ -1,14 +1,8 @@
-package part1.thread;
+package thread;
 
-import part1.Chaussure;
-import part1.ChaussureVille;
-import part1.Main;
-import part1.monitor.Groupe;
-import part1.monitor.Guichet;
-import part1.monitor.PisteJeu;
-import part1.monitor.SalleDanse;
-import part1.monitor.StockChaussure;
-import part1.monitorAndThread.Bowling;
+import model.*;
+import monitor.*;
+import monitorAndThread.*;
 
 public class Client extends Thread {
 
