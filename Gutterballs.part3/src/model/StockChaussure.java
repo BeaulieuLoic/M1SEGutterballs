@@ -1,16 +1,24 @@
-package monitor;
+package model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import Main.Main;
 import model.*;
+import monitor.Groupe;
 import thread.*;
 
 public class StockChaussure {
 	private Map<Client,ChaussureVille> listeChaussureCLient;
+	private List<ChaussureBowling> listChaussureBowling;
 	
 	public StockChaussure(){
 		listeChaussureCLient = new HashMap<>();
+		
+		for (int i = 0; i < Main.nbPiste*Groupe.nbMaxClient; i++) {
+			listChaussureBowling.add(new ChaussureBowling());
+		}
 	}	
 		
 	/**

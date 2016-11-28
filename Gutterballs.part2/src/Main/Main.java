@@ -1,9 +1,11 @@
+package Main;
 
 
 import java.util.LinkedList;
 import java.util.List;
 
 import model.CreationGroupe;
+import model.StockChaussure;
 import monitor.*;
 import monitorAndThread.*;
 import thread.Client;
