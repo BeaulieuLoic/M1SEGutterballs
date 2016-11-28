@@ -23,12 +23,12 @@ public class Main {
 		salleDanse.setBowling(bowling);
 
 		
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 1; i++) {
 			bowling.addPiste(new PisteJeu(i));
 		}
 		
 		
-		for (int i = 0; i < 30*Groupe.nbMaxClient; i++) {
+		for (int i = 0; i < 10*Groupe.nbMaxClient; i++) {
 			lc.add(new Client(i, guichet, salleDanse,bowling, stockChaussure));
 		}		
 		
@@ -51,6 +51,15 @@ public class Main {
 		System.out.println("Stat :");
 		System.out.println(bowling.getStat());
 
+	}
+	
+	public static void sleep(int ms){
+		try {
+			Thread.sleep(ms);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

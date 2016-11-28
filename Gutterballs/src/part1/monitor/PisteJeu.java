@@ -1,5 +1,6 @@
 package part1.monitor;
 
+import part1.thread.Client;
 
 public class PisteJeu {
 	private int id;
@@ -33,8 +34,8 @@ public class PisteJeu {
 	public void setGroupe(Groupe grp) {
 		groupe = grp;
 	}
-	
-	public int getNbPartieJouer(){
+
+	public int getNbPartieJouer() {
 		return nbPartieJouer;
 	}
 
@@ -45,23 +46,26 @@ public class PisteJeu {
 		nbPartieJouer++;
 	}
 
-	public synchronized void waitGroupeAndPlay(Groupe grp) {
-		while (!grp.isInPiste()) {
+	public synchronized void waitGroupeAndPlay(Groupe grp, Client cl) {
+		cl.setIsReady(true);
+
+		// tout le groupe est arrivé, lancement de la partie, termine la partie,
+		// prévient le bowling et reveil tout les client
+		// seul 1 thread rentre dedans car partieTermine() va metre à null le
+		// groupe actuel de la piste
+		if (!grp.isAllReady()) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		
-		//tout le groupe est arrivé, lancement de la partie, termine la partie, prévient le bowling et reveil tout les client
-		//seul 1 thread rentre dedans car partieTermine() va metre à null le groupe actuel de la piste
- 		if (groupe != null) {
+		} else {
 			System.out.println(grp + " est dans pisteDeJeu. debut de la partie ...");
 			lancerPartie();
 			partieTermine();
-			System.out.println(grp + " partie finit. "+this);
+			System.out.println(grp + " partie finit. " + this);
+			grp.setAllIsReady(false);
 			notifyAll();
 		}
 	}

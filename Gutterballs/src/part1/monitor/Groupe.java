@@ -13,7 +13,7 @@ public class Groupe {
 	private int id;
 	private List<Client> listeClient;
 	private SalleDanse salleDanse;
-	
+
 	private boolean pisteDeJeuAttribuer;
 
 	public Groupe(int id, SalleDanse salleDanse) {
@@ -42,6 +42,21 @@ public class Groupe {
 		return (listeClient.size() >= nbMaxClient);
 	}
 
+	public synchronized boolean isAllReady() {
+		for (Client client : listeClient) {
+			if (!client.isReady()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public synchronized void setAllIsReady(boolean b) {
+		for (Client client : listeClient) {
+			client.setIsReady(b);
+		}
+	}
+
 	public synchronized boolean isFullShoesBowling() {
 		for (Client client : listeClient) {
 			if (!(client.getChaussure() instanceof ChaussureBowling)) {
@@ -56,25 +71,6 @@ public class Groupe {
 
 	}
 
-	public synchronized boolean isInSalle() {
-		for (Client client : listeClient) {
-			if (!(client.isInSalle())) {
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	public synchronized boolean isInPiste() {
-		for (Client client : listeClient) {
-			if (!(client.isInPiste())) {
-				return false;
-			}
-		}
-		return true;
-	}
-
 	public synchronized boolean gotPisteJeu() {
 		return pisteDeJeuAttribuer;
 	}
@@ -83,13 +79,10 @@ public class Groupe {
 		listeClient.get(0).prevenirBowlingPartieFinit();
 	}
 
-	/**
-	 * 
-	 * 
-	 * */
-	public synchronized void waitGroupeSalleDanse() {
+	public synchronized void waitGroupeSalleDanse(Client cl) {
+		cl.setIsReady(true);
 		// if car le dernier client qui arrive va forc�ment passer dans le else
-		if (!isInSalle()) {
+		if (!isAllReady()) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -99,7 +92,43 @@ public class Groupe {
 		} else {
 			salleDanse.addGroupe(this);
 			System.out.println(this + " est dans la salle de danse.");
+			setAllIsReady(false);
 			notifyAll();
+		}
+	}
+
+	public synchronized void waitGroupeFull(Client cl) {
+		cl.setIsReady(true);
+		if (!isFull() || !isAllReady()) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			setAllIsReady(false);
+			notifyAll();
+		}
+	}
+
+	public synchronized void waitAllHaveShoe(Client cl) {
+		cl.setIsReady(true);
+
+		if (!isAllReady()) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} else {
+
+			System.out.println(this + " est chaussé.");
+			setAllIsReady(false);
+			notifyAll();
+
 		}
 	}
 
@@ -116,34 +145,6 @@ public class Groupe {
 		if (id != other.id)
 			return false;
 		return true;
-	}
-
-	public synchronized void waitGroupeFull() {
-		if (!isFull()) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			notifyAll();
-		}
-	}
-
-	public synchronized void waitAllHaveShoe() {
-		if (isFullShoesBowling()) {
-			System.out.println(this + " est chaussé.");
-			notifyAll();
-		} else {
-
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 	}
 
 }

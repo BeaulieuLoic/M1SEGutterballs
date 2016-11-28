@@ -23,7 +23,7 @@ public class Guichet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 		if (groupe.isFull()) {
 			System.out.println(groupe + " Ã  finit d'être créé.");
 			nbGrp++;
@@ -33,7 +33,7 @@ public class Guichet {
 
 	public synchronized void fairePayerClient(Client cl) {
 		try {
-			Thread.sleep(200);
+			Thread.sleep(10);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
