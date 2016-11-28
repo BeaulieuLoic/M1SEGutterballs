@@ -1,5 +1,7 @@
 package thread;
 
+import java.util.List;
+
 import model.*;
 import monitor.*;
 import monitorAndThread.*;
@@ -12,6 +14,7 @@ public class Client extends Thread {
 	private Guichet guichet;
 
 	private boolean isReady;
+	private boolean asPayed;
 
 	private StockChaussure stockChaussure;
 	private PisteJeu pisteJeu;
@@ -26,11 +29,24 @@ public class Client extends Thread {
 		salleDanse = sd;
 
 		isReady = false;
+		asPayed = false;
 
 		stockChaussure = stock;
 		bowling = bl;
 	}
 
+	public boolean gotGroupe() {
+		return groupe != null;
+	}
+
+	public boolean asPayed() {
+		return asPayed;
+	}
+
+	public void setPayed(boolean b){
+		asPayed=b;
+	}
+	
 	public boolean isReady() {
 		return isReady;
 	}
@@ -72,6 +88,7 @@ public class Client extends Thread {
 		boolean afficherClient = false;
 
 		if (afficherClient) {
+
 			System.out.println(this + "-> Guichet");
 		}
 
@@ -85,15 +102,14 @@ public class Client extends Thread {
 
 		// go to salle des chaussures
 		stockChaussure.changeVtoB(this); // se chausse
-		
-		
+
 		groupe.waitAllHaveShoe(this);
 		if (afficherClient) {
 			System.out.println(this + " " + groupe + " à finit d'attendre dans stockChaussure. -> go SalleDeDanse");
 		}
 
 		// go to salle de danse et attend que tout les membres du groupe y soit
-		
+
 		groupe.waitGroupeSalleDanse(this);
 
 		if (afficherClient) {
@@ -108,7 +124,6 @@ public class Client extends Thread {
 		if (afficherClient) {
 			System.out.println(this + " " + groupe + "  piste de jeu trouver. -> go to pisteDeJeux");
 		}
-
 
 		// attendre que son groupe soit au complet sur la piste puis joue
 		pisteJeu.waitGroupeAndPlay(groupe, this);

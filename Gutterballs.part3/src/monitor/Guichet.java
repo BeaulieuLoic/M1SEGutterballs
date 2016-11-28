@@ -1,43 +1,65 @@
 package monitor;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 import thread.Client;
+import thread.Guichetier;
 
 public class Guichet {
 
-	private Groupe groupe;
-	private SalleDanse salleDanse;
-	private static int nbGrp = 0;
+	private Queue<Client> listClientAct;
+	public Guichet() {
 
-	public Guichet(SalleDanse salleDanse) {
-		this.salleDanse = salleDanse;
-		groupe = new Groupe(nbGrp, salleDanse);
-	}
-
-	public synchronized void addToGroup(Client client) {
-
-		groupe.addClient(client);
-		client.setGroupe(groupe);
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		if (groupe.isFull()) {
-			System.out.println(groupe + " Ã  finit d'être créé.");
-			nbGrp++;
-			groupe = new Groupe(nbGrp, salleDanse);
-		}
-	}
+		listClientAct = new LinkedList<Client>();
+	}	
 
 	public synchronized void fairePayerClient(Client cl) {
-		try {
-			Thread.sleep(10);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		listClientAct.add(cl);
+		notifyAll();
+		while(!cl.asPayed()){
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
+	
+	public synchronized void wakeUpClient(){
+		notifyAll();
+	}
+	
+	public synchronized void addToGroup(Client cl){
+		listClientAct.add(cl);
+		notifyAll();
+		while(!cl.gotGroupe()){
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public synchronized Client getClient(){
+		while(listClientAct.size() == 0){
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
+		
+		return listClientAct.poll();
+	}
+	
 
 }
