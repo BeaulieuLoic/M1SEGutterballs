@@ -5,11 +5,11 @@ import java.util.List;
 
 import bowling.PisteJeu;
 import bowling.SalleDanse;
-import chaussure.ChaussureBowling;
+import Main.Main;
 
 public class Groupe {
 
-	public static final int nbMaxClient = 3;
+	public static final int nbMaxClient = Main.nbClientGrp;
 
 	private int id;
 	private List<Client> listeClient;
@@ -60,7 +60,7 @@ public class Groupe {
 
 	public synchronized boolean isFullShoesBowling() {
 		for (Client client : listeClient) {
-			if (!(client.getChaussure() instanceof ChaussureBowling)) {
+			if (!(client.getChaussure().isBowling())) {
 				return false;
 			}
 		}

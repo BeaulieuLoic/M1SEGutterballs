@@ -6,9 +6,8 @@ import java.util.List;
 import bowling.Bowling;
 import bowling.PisteJeu;
 import bowling.SalleDanse;
-import chaussure.Chaussure;
-import chaussure.ChaussureVille;
 import bowling.guichet.Guichet;
+import bowling.stockChaussure.PrioriteChaussureMonitor;
 import bowling.stockChaussure.StockChaussure;
 
 
@@ -30,7 +29,7 @@ public class Client extends Thread {
 
 	public Client(int id, Guichet guichet, SalleDanse sd, Bowling bl, StockChaussure stock) {
 		this.id = id;
-		this.chaussure = new ChaussureVille();
+		this.chaussure = new Chaussure(id);
 		this.guichet = guichet;
 
 		salleDanse = sd;
@@ -91,6 +90,18 @@ public class Client extends Thread {
 		guichet.fairePayerClient(this);
 	}
 
+	public int getPriorite(){
+		if(chaussure.isBowling()){
+			return PrioriteChaussureMonitor.prioMax;
+		}else if(false){//a changer
+			return PrioriteChaussureMonitor.prioIntermediaire;
+		}else{
+			return PrioriteChaussureMonitor.prioMin;
+		}
+		
+	}
+	
+	
 	public void run() {
 		boolean afficherClient = false;
 

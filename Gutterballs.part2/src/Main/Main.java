@@ -21,6 +21,7 @@ public class Main {
 	public static final int nbGuichetier = 3;
 	public static final int nbPiste = 3;
 	public static final int nbGroupe = 10;
+	public static final int nbClientGrp = 3;
 	
 	
 	
@@ -48,7 +49,7 @@ public class Main {
 		}
 		
 		
-		for (int i = 0; i < nbGroupe*Groupe.nbMaxClient; i++) {
+		for (int i = 0; i < nbGroupe*nbClientGrp; i++) {
 			lc.add(new Client(i, guichet, salleDanse,bowling, stockChaussure));
 		}		
 

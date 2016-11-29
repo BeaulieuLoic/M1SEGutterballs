@@ -1,23 +1,23 @@
 package bowling.stockChaussure;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import client.*;
-import chaussure.ChaussureBowling;
-import chaussure.ChaussureVille;
 import Main.Main;
 
 public class StockChaussure {
-	private Map<Client,ChaussureVille> listeChaussureCLient;
-	private List<ChaussureBowling> listChaussureBowling;
+	private Map<Client,Chaussure> listeChaussureCLient;
+	private List<Chaussure> listChaussureBowling;
 	
 	public StockChaussure(){
 		listeChaussureCLient = new HashMap<>();
+		listChaussureBowling = new LinkedList<>();
 		
 		for (int i = 0; i < Main.nbPiste*Groupe.nbMaxClient; i++) {
-			listChaussureBowling.add(new ChaussureBowling());
+			listChaussureBowling.add(new Chaussure());
 		}
 	}	
 		
@@ -26,10 +26,9 @@ public class StockChaussure {
 	 * Ville vers bowling.
 	 */
 	public synchronized void changeVtoB(Client cl){
-		if (cl.getChaussure() instanceof ChaussureVille) {
-			ChaussureVille chaussureClient =  (ChaussureVille) cl.getChaussure();
-			listeChaussureCLient.put(cl,chaussureClient);
-			cl.setChaussure(new ChaussureBowling());// pour la v3 prendre une chaussure dans la liste, ou attendre s'il n'y en a plus
+		if (cl.getChaussure().isVille()) {
+			listeChaussureCLient.put(cl,cl.getChaussure());
+			cl.setChaussure(new Chaussure());// pour la v3 prendre une chaussure dans la liste, ou attendre s'il n'y en a plus
 			
 			try {
 				Thread.sleep(100);
@@ -47,10 +46,9 @@ public class StockChaussure {
 	 * Bowling vers Ville.
 	 */
 	public synchronized void changeBtoV(Client cl){
-		if (cl.getChaussure() instanceof ChaussureBowling) {
-			ChaussureBowling chaussureClient =  (ChaussureBowling) cl.getChaussure();
+		if (cl.getChaussure().isBowling()) {
 			cl.setChaussure(listeChaussureCLient.get(cl));
-			listChaussureBowling.add(chaussureClient);
+			listChaussureBowling.add(cl.getChaussure());
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e1) {

@@ -1,6 +1,5 @@
 package client;
 
-import chaussure.*;
 import bowling.Bowling;
 import bowling.PisteJeu;
 import bowling.SalleDanse;
@@ -23,7 +22,7 @@ public class Client extends Thread {
 
 	public Client(int id, Guichet guichet, SalleDanse sd, Bowling bl, StockChaussure stock) {
 		this.id = id;
-		this.chaussure = new ChaussureVille();
+		this.chaussure = new Chaussure(id);
 		this.guichet = guichet;
 
 		salleDanse = sd;

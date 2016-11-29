@@ -3,11 +3,11 @@ package bowling.stockChaussure;
 import java.util.HashMap;
 import java.util.Map;
 
-import chaussure.*;
+
 import client.*;
 
 public class StockChaussure {
-	private Map<Client,ChaussureVille> listeChaussureCLient;
+	private Map<Client,Chaussure> listeChaussureCLient;
 	
 	public StockChaussure(){
 		listeChaussureCLient = new HashMap<>();
@@ -18,10 +18,9 @@ public class StockChaussure {
 	 * Ville vers bowling.
 	 */
 	public synchronized void changeVtoB(Client cl){
-		if (cl.getChaussure() instanceof ChaussureVille) {
-			ChaussureVille chaussureClient =  (ChaussureVille) cl.getChaussure();
-			listeChaussureCLient.put(cl,chaussureClient);
-			cl.setChaussure(new ChaussureBowling());// pour la v3 prendre une chaussure dans la liste, ou attendre s'il n'y en a plus
+		if (cl.getChaussure().isVille()) {
+			listeChaussureCLient.put(cl,cl.getChaussure());
+			cl.setChaussure(new Chaussure());// pour la v3 prendre une chaussure dans la liste, ou attendre s'il n'y en a plus
 			
 			try {
 				Thread.sleep(100);
@@ -39,8 +38,7 @@ public class StockChaussure {
 	 * Bowling vers Ville.
 	 */
 	public synchronized void changeBtoV(Client cl){
-		if (cl.getChaussure() instanceof ChaussureBowling) {
-			//ChaussureBowling chaussureClient =  (ChaussureBowling) cl.getChaussure();//pour v2
+		if (cl.getChaussure().isBowling()) {
 			cl.setChaussure(listeChaussureCLient.get(cl));
 			try {
 				Thread.sleep(100);

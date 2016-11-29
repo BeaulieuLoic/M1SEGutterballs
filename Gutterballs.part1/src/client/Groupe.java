@@ -3,7 +3,6 @@ package client;
 import java.util.LinkedList;
 import java.util.List;
 
-import chaussure.ChaussureBowling;
 import bowling.PisteJeu;
 import bowling.SalleDanse;
 
@@ -60,7 +59,7 @@ public class Groupe {
 
 	public synchronized boolean isFullShoesBowling() {
 		for (Client client : listeClient) {
-			if (!(client.getChaussure() instanceof ChaussureBowling)) {
+			if (!(client.getChaussure().isBowling())) {
 				return false;
 			}
 		}
