@@ -29,6 +29,10 @@ public class Chaussure {
 		return type==TypeChaussure.ville;
 	}
 
+	public int getId(){
+		return id;
+	}
+	
 	@Override
 	public String toString() {
 		return "Chaussure [id=" + id + ", type=" + type + "]";

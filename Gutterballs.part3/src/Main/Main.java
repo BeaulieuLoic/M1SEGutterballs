@@ -11,6 +11,8 @@ import bowling.SalleDanse;
 import bowling.guichet.CreationGroupe;
 import bowling.guichet.Guichet;
 import bowling.guichet.Guichetier;
+import bowling.stockChaussure.EmployerChaussure;
+import bowling.stockChaussure.GuichetStockChaussure;
 import bowling.stockChaussure.StockChaussure;
 import client.Client;
 import client.Groupe;
@@ -19,9 +21,14 @@ import client.Groupe;
 
 public class Main {
 	public static final int nbGuichetier = 3;
-	public static final int nbPiste = 1;
-	public static final int nbGroupe = 3;
-	public static final int nbClientGrp = 3;
+	public static final int nbPiste = 3;
+	public static final int nbGroupe = 10;
+	public static final int nbClientGrp = 10;
+	public static final boolean afficheMsgClient = false;
+	public static final int dureePartie = 1000;//ms
+	
+	
+	//nb client = nbGroupe * nbClientGrp
 	
 	
 
@@ -32,13 +39,20 @@ public class Main {
 		List<Guichetier> lGuichetier = new LinkedList<>();
 		
 		SalleDanse salleDanse = new SalleDanse();
-		StockChaussure stockChaussure = new StockChaussure();
 		CreationGroupe grpCreation = new CreationGroupe(salleDanse);
 		Guichet guichet = new Guichet();
-				
+		
+		StockChaussure stockChaussure = new StockChaussure();
+		EmployerChaussure empChaussure = new EmployerChaussure(stockChaussure);
+		GuichetStockChaussure guichetStockChaussure = new GuichetStockChaussure(empChaussure);
+		
+		
 		Bowling bowling = new Bowling(salleDanse);
 		salleDanse.setBowling(bowling);
 
+		
+		
+		
 		for (int i = 0; i < nbGuichetier; i++) {
 			lGuichetier.add(new Guichetier(grpCreation, guichet));
 		}
@@ -49,10 +63,15 @@ public class Main {
 		
 		
 		for (int i = 0; i < nbGroupe*nbClientGrp; i++) {
-			lc.add(new Client(i, guichet, salleDanse,bowling, stockChaussure));
+			lc.add(new Client(i, guichet, salleDanse,bowling, guichetStockChaussure));
 		}		
 
 		
+		bowling.setDaemon(true);//quand plus de client le bowling ferme
+		bowling.start();
+		
+		empChaussure.setDaemon(true);
+		empChaussure.start();
 		
 		for (Guichetier guichetier : lGuichetier) {
 			guichetier.setDaemon(true);
@@ -60,15 +79,17 @@ public class Main {
 		}
 		
 		for (Client client : lc) {
-			client.start();
+			client.start();			
 		}
 		
-		bowling.setDaemon(true);//quand plus de client le bowling ferme
-		bowling.start();
+
 		
+		int acc = 0;
 		for (Client client : lc) {
 			try {
+				acc++;
 				client.join();
+				//System.out.println("proc client finit : "+acc+"/"+nbClientGrp*nbGroupe);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

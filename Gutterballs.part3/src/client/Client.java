@@ -7,9 +7,10 @@ import bowling.Bowling;
 import bowling.PisteJeu;
 import bowling.SalleDanse;
 import bowling.guichet.Guichet;
+import bowling.stockChaussure.GuichetStockChaussure;
 import bowling.stockChaussure.PrioriteChaussureMonitor;
 import bowling.stockChaussure.StockChaussure;
-
+import Main.Main;
 
 
 public class Client extends Thread {
@@ -22,12 +23,12 @@ public class Client extends Thread {
 	private boolean isReady;
 	private boolean asPayed;
 
-	private StockChaussure stockChaussure;
+	private GuichetStockChaussure stockChaussure;
 	private PisteJeu pisteJeu;
 	private SalleDanse salleDanse;
 	private Bowling bowling;
 
-	public Client(int id, Guichet guichet, SalleDanse sd, Bowling bl, StockChaussure stock) {
+	public Client(int id, Guichet guichet, SalleDanse sd, Bowling bl, GuichetStockChaussure stock) {
 		this.id = id;
 		this.chaussure = new Chaussure(id);
 		this.guichet = guichet;
@@ -93,7 +94,7 @@ public class Client extends Thread {
 	public int getPriorite(){
 		if(chaussure.isBowling()){
 			return PrioriteChaussureMonitor.prioMax;
-		}else if(false){//a changer
+		}else if(groupe.nbClientGetChaussureBowling() >= 1){
 			return PrioriteChaussureMonitor.prioIntermediaire;
 		}else{
 			return PrioriteChaussureMonitor.prioMin;
@@ -103,7 +104,7 @@ public class Client extends Thread {
 	
 	
 	public void run() {
-		boolean afficherClient = false;
+		boolean afficherClient = Main.afficheMsgClient;
 
 		if (afficherClient) {
 
@@ -119,7 +120,7 @@ public class Client extends Thread {
 		}
 
 		// go to salle des chaussures
-		stockChaussure.changeVtoB(this); // se chausse
+		stockChaussure.switchChaussure(this); // se chausse
 
 		groupe.waitAllHaveShoe(this);
 		if (afficherClient) {
@@ -127,7 +128,12 @@ public class Client extends Thread {
 		}
 
 		// go to salle de danse et attend que tout les membres du groupe y soit
-
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		groupe.waitGroupeSalleDanse(this);
 
 		if (afficherClient) {
@@ -162,8 +168,15 @@ public class Client extends Thread {
 		}
 
 		// go to salle des chaussures
-		stockChaussure.changeBtoV(this);
+		stockChaussure.switchChaussure(this);
+		
+		if (chaussure.getId() != id) {
+			System.out.println("!!!!! Erreur chaussure du client != this.id !!!!!");
+		}
 
+		if (afficherClient) {
+			System.out.println(this + " exit");
+		}
 		// go exit
 	}
 
