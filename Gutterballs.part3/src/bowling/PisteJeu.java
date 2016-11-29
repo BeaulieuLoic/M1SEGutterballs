@@ -1,6 +1,7 @@
-package monitor;
+package bowling;
 
-import thread.Client;
+import client.Client;
+import client.Groupe;
 
 public class PisteJeu {
 	private int id;

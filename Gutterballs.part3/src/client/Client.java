@@ -1,10 +1,17 @@
-package thread;
+package client;
+
 
 import java.util.List;
 
-import model.*;
-import monitor.*;
-import monitorAndThread.*;
+import bowling.Bowling;
+import bowling.PisteJeu;
+import bowling.SalleDanse;
+import chaussure.Chaussure;
+import chaussure.ChaussureVille;
+import bowling.guichet.Guichet;
+import bowling.stockChaussure.StockChaussure;
+
+
 
 public class Client extends Thread {
 

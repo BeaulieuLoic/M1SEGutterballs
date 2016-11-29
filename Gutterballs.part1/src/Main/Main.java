@@ -3,10 +3,13 @@ package Main;
 
 import java.util.LinkedList;
 
-import model.StockChaussure;
-import monitor.*;
-import monitorAndThread.*;
-import thread.Client;
+import client.Client;
+import client.Groupe;
+import bowling.Bowling;
+import bowling.PisteJeu;
+import bowling.SalleDanse;
+import bowling.guichet.Guichet;
+import bowling.stockChaussure.StockChaussure;
 
 public class Main {
 

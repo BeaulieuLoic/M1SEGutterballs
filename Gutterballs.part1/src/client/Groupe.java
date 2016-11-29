@@ -3,9 +3,9 @@ package client;
 import java.util.LinkedList;
 import java.util.List;
 
+import chaussure.ChaussureBowling;
 import bowling.PisteJeu;
 import bowling.SalleDanse;
-import chaussure.ChaussureBowling;
 
 public class Groupe {
 

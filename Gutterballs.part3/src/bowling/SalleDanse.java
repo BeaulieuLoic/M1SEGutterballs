@@ -1,9 +1,9 @@
-package monitor;
+package bowling;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import monitorAndThread.Bowling;
+import client.Groupe;
 
 public class SalleDanse {
 	private List<Groupe> listGroupe;

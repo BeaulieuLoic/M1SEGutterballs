@@ -1,15 +1,19 @@
 package Main;
 
 
+
 import java.util.LinkedList;
 import java.util.List;
 
-import model.CreationGroupe;
-import model.StockChaussure;
-import monitor.*;
-import monitorAndThread.*;
-import thread.Client;
-import thread.Guichetier;
+import bowling.Bowling;
+import bowling.PisteJeu;
+import bowling.SalleDanse;
+import bowling.guichet.CreationGroupe;
+import bowling.guichet.Guichet;
+import bowling.guichet.Guichetier;
+import bowling.stockChaussure.StockChaussure;
+import client.Client;
+import client.Groupe;
 
 
 

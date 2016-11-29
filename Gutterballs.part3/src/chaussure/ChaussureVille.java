@@ -1,4 +1,4 @@
-package model;
+package chaussure;
 
 
 public class ChaussureVille extends Chaussure {

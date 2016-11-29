@@ -3,8 +3,8 @@ package bowling.stockChaussure;
 import java.util.HashMap;
 import java.util.Map;
 
-import chaussure.*;
 import client.*;
+import chaussure.*;
 
 public class StockChaussure {
 	private Map<Client,ChaussureVille> listeChaussureCLient;

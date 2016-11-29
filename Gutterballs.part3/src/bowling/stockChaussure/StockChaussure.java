@@ -1,16 +1,24 @@
 package bowling.stockChaussure;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import chaussure.*;
 import client.*;
+import chaussure.ChaussureBowling;
+import chaussure.ChaussureVille;
+import Main.Main;
 
 public class StockChaussure {
 	private Map<Client,ChaussureVille> listeChaussureCLient;
+	private List<ChaussureBowling> listChaussureBowling;
 	
 	public StockChaussure(){
 		listeChaussureCLient = new HashMap<>();
+		
+		for (int i = 0; i < Main.nbPiste*Groupe.nbMaxClient; i++) {
+			listChaussureBowling.add(new ChaussureBowling());
+		}
 	}	
 		
 	/**
@@ -40,8 +48,9 @@ public class StockChaussure {
 	 */
 	public synchronized void changeBtoV(Client cl){
 		if (cl.getChaussure() instanceof ChaussureBowling) {
-			//ChaussureBowling chaussureClient =  (ChaussureBowling) cl.getChaussure();//pour v2
+			ChaussureBowling chaussureClient =  (ChaussureBowling) cl.getChaussure();
 			cl.setChaussure(listeChaussureCLient.get(cl));
+			listChaussureBowling.add(chaussureClient);
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e1) {

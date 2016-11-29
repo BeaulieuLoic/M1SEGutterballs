@@ -1,4 +1,4 @@
-package model;
+package chaussure;
 
 public abstract class Chaussure {
 
