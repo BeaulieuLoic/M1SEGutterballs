@@ -25,9 +25,7 @@ public class EmployerChaussure extends Thread {
 	}
 	
 	public synchronized void wakeUpEmployer(){
-		if (occuper) {
-			
-		}else{
+		if (!occuper) {
 			notify();
 		}
 		
@@ -36,6 +34,7 @@ public class EmployerChaussure extends Thread {
 	
 	public void run(){
 		while(true){
+			
 			synchronized (this){
 				if (listMonitor.get(PrioriteChaussureMonitor.prioMax).getNbClient() > 0
 					||stock.gotChaussureBowling() && 
@@ -43,11 +42,9 @@ public class EmployerChaussure extends Thread {
 						|| listMonitor.get(PrioriteChaussureMonitor.prioMin).getNbClient()>0)) {
 				}else{
 					try {
-						System.out.println("deb");
 						occuper = false;
 						wait();
 						occuper = true;
-						System.out.println("fin");
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -60,6 +57,7 @@ public class EmployerChaussure extends Thread {
 			if (stock.gotChaussureBowling()){
 				listMonitor.get(PrioriteChaussureMonitor.prioInt).switchCurrentClientChaussure();
 				if (stock.gotChaussureBowling()) {
+					//switchCurrentClientChaussure sur le monitor prioMin va chaussé 1 client au maximum
 					listMonitor.get(PrioriteChaussureMonitor.prioMin).switchCurrentClientChaussure();
 				}
 			}

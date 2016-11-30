@@ -12,9 +12,6 @@ import Main.Main;
 public class StockChaussure {
 	private Map<Client, Chaussure> listeChaussureCLient;
 	private List<Chaussure> listChaussureBowling;
-	private List<PrioriteChaussureMonitor> listMonitor;
-	int nbA=0;
-	int nbB=0;
 	
 	public StockChaussure() {
 		listeChaussureCLient = new HashMap<>();
@@ -61,7 +58,7 @@ public class StockChaussure {
 	/**
 	 * Change le type des chaussures du client. Bowling vers Ville.
 	 */
-	private boolean changeBtoV(Client cl) {
+	private void changeBtoV(Client cl) {
 		if (listeChaussureCLient.size() == 0) {
 			System.out
 					.println("!!!!! Erreur changeBtoV plus de chaussure de client !!!!!");
@@ -78,7 +75,6 @@ public class StockChaussure {
 				e1.printStackTrace();
 			}
 		}
-		return true;
 	}
 
 	/**
@@ -91,12 +87,9 @@ public class StockChaussure {
 	 * */
 	protected boolean emplSwitchChaussure(Client cl) {
 		if (cl.getChaussure().isBowling()) {
-			nbA++;
-			//System.out.println("aaaa"+nbA);
-			return changeBtoV(cl);
+			changeBtoV(cl);
+			return true;
 		} else {
-			nbB++;
-			//System.out.println("bbbbbb"+nbB);
 			return changeVtoB(cl);
 		}
 	}

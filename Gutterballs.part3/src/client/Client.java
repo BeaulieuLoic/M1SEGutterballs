@@ -134,7 +134,7 @@ public class Client extends Thread {
 
 		// go to salle de danse et attend que tout les membres du groupe y soit
 		try {
-			Thread.sleep(100);
+			Thread.sleep(Main.dureeGoToSalleDanse);// go to
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -146,6 +146,12 @@ public class Client extends Thread {
 					this + " " + groupe + " à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu");
 		}
 
+		try {
+			Thread.sleep(Main.dureeGoToPiste);// go to
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// attends d'etre notifié par soit un membre de son groupe soit par le
 		// bowling qu'une place est libre
 		salleDanse.waitPisteDispo(groupe);

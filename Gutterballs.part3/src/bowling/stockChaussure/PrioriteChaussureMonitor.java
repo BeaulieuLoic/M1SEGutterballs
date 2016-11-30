@@ -43,7 +43,8 @@ public class PrioriteChaussureMonitor {
 	
 	public synchronized int switchCurrentClientChaussure(){
 		if (prio == prioMin) {
-			// lorsque la priorit� est minimal, on s'occupe d'un par un des clients car la priorité des autres clients peut changer
+			// lorsque la priorit� est minimal, on s'occupe un par un des clients car la priorité 
+			// des autres clients dans ce même monitor peut changer
 			if(listeClient.size() > 0 && stock.emplSwitchChaussure(listeClient.get(0))){
 				notifyAll();
 				return 1;
@@ -60,8 +61,6 @@ public class PrioriteChaussureMonitor {
 					break;
 				}
 			}
-			
-			
 			if (acc > 0) {
 				notifyAll();
 			}
