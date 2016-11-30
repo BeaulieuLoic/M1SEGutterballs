@@ -62,11 +62,11 @@ public class Client extends Thread {
 		isReady = b;
 	}
 
-	public Chaussure getChaussure() {
+	public synchronized Chaussure getChaussure() {
 		return chaussure;
 	}
 
-	public void setChaussure(Chaussure chaussure) {
+	public synchronized void setChaussure(Chaussure chaussure) {
 		this.chaussure = chaussure;
 	}
 
@@ -122,6 +122,11 @@ public class Client extends Thread {
 		// go to salle des chaussures
 		guichetChaussure.switchChaussure(this); // se chausse
 
+		if (chaussure.isVille()) {
+			System.out.println("!!!!! Erreur le client n'à pas de chaussure de bowling!!!!! "+chaussure+ " "+this);
+		}
+		
+		
 		groupe.waitAllHaveShoe(this);
 		if (afficherClient) {
 			System.out.println(this + " " + groupe + " à finit d'attendre dans stockChaussure. -> go SalleDeDanse");
@@ -157,7 +162,7 @@ public class Client extends Thread {
 					this + " " + groupe + " à finit d'attendre son groupe dans pisteJeux. -> joue une partie");
 		}
 
-		// Jouer :D (le dernier client arriv� dans pisteJeu lance la partie)
+		// Jouer :D (le dernier client arriv� dans pisteJeu lance la partie)
 		// Soit prevenir le bowling que la partie est terminée soit il se barre
 		// go to guichet
 		// Payer D:
@@ -170,21 +175,15 @@ public class Client extends Thread {
 		// go to salle des chaussures
 		
 		guichetChaussure.switchChaussure(this);
-		System.out.println("zzzzz");
-
 		
 		if (chaussure.getId() != id) {
-			System.out.println("!!!!! Erreur chaussure du client != this.id !!!!!");
+			System.out.println("!!!!! Erreur chaussure du client != this.id !!!!! "+chaussure+ " "+this);
 		}
 
 		if (afficherClient) {
 			System.out.println(this + " exit");
 		}
 		// go exit
-	}
-
-	public boolean equals(Client cl) {
-		return id == cl.id;
 	}
 
 }

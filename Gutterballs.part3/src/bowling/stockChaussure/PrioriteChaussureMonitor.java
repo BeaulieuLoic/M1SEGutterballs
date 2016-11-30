@@ -1,5 +1,6 @@
 package bowling.stockChaussure;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import client.Client;
 
 public class PrioriteChaussureMonitor {
 	public static final int prioMax = 0;//bowling to ville
-	public static final int prioInt = 1;//1 client du groupe à déja bowling
+	public static final int prioInt = 1;//1 client du groupe ï¿½ dï¿½ja bowling
 	public static final int prioMin = 2;
 	
 	private int prio;
@@ -40,21 +41,36 @@ public class PrioriteChaussureMonitor {
 		listeClient.remove(cl);
 	}
 	
-	public synchronized void switchCurrentClientChaussure(){
-		
+	public synchronized int switchCurrentClientChaussure(){
 		if (prio == prioMin) {
-			// lorsque la priorité est minimal, on s'occupe d'un par un des client car leurs priorité peuvent changer
-			stock.emplSwitchChaussure(listeClient.get(0));
-			notifyAll();
-		}else{
-			for (Client client : listeClient) {
-				if(stock.emplSwitchChaussure(client)){
-					notifyAll();
-				}else{
-					
-					break;
-				}	
+			// lorsque la prioritï¿½ est minimal, on s'occupe d'un par un des clients car la prioritÃ© des autres clients peut changer
+			if(listeClient.size() > 0 && stock.emplSwitchChaussure(listeClient.get(0))){
+				notifyAll();
+				return 1;
+			}else{
+				return 0;
 			}
+		}else{
+			int acc = 0;
+			for (int i = 0; i < listeClient.size(); i++) {
+				if(stock.emplSwitchChaussure(listeClient.get(i))){
+					acc++;
+					listeClient.remove(i);
+				}else{
+					break;
+				}
+			}
+			
+			
+			if (acc > 0) {
+				notifyAll();
+			}
+			return acc;
 		}
+	}
+
+	public int getNbClient() {
+		// TODO Auto-generated method stub
+		return listeClient.size();
 	}
 }

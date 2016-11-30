@@ -8,23 +8,28 @@ import java.util.Map;
 import client.*;
 import Main.Main;
 
+
 public class StockChaussure {
 	private Map<Client, Chaussure> listeChaussureCLient;
 	private List<Chaussure> listChaussureBowling;
-	
-
 	private List<PrioriteChaussureMonitor> listMonitor;
+	int nbA=0;
+	int nbB=0;
+	
 	public StockChaussure() {
 		listeChaussureCLient = new HashMap<>();
 		listChaussureBowling = new LinkedList<>();
 
-		for (int i = 0; i < Groupe.nbMaxClient; i++) {
+		for (int i = 0; i < Main.nbClientGrp*Main.nbPiste; i++) {
 			listChaussureBowling.add(new Chaussure());
 		}
 	}
 	
-	public int getNbChaussureBowling(){
-		return listChaussureBowling.size();
+	/**
+	 * pas synchronized car seul e thread employerChaussure y accÃ¨de
+	 * */
+	public boolean gotChaussureBowling(){
+		return listChaussureBowling.size() > 0;
 	}
 
 	/**
@@ -38,10 +43,9 @@ public class StockChaussure {
 		}
 		
 		
-		listeChaussureCLient.put(cl, cl.getChaussure());
-		cl.setChaussure(listChaussureBowling.get(0));// pour la v3 prendre une chaussure
-											// dans la liste, ou attendre s'il
-											// n'y en a plus
+		listeChaussureCLient.put(cl, cl.getChaussure());		
+		
+		cl.setChaussure(listChaussureBowling.get(0));
 		listChaussureBowling.remove(0);
 
 		try {
@@ -64,7 +68,9 @@ public class StockChaussure {
 		}else{
 			listChaussureBowling.add(cl.getChaussure());
 			cl.setChaussure(listeChaussureCLient.get(cl));
-			
+			if (cl.getChaussure().isBowling()) {
+				System.out.println(listeChaussureCLient);
+			}
 			try {
 				Thread.sleep(Main.dureeChausse);
 			} catch (InterruptedException e1) {
@@ -76,17 +82,21 @@ public class StockChaussure {
 	}
 
 	/**
-	 * pas de synchronized car seul le thread de employerChaussure va accédé à
+	 * pas de synchronized car seul le thread de employerChaussure va accï¿½dï¿½ ï¿½
 	 * cette classe
 	 * 
 	 * si return false, cela signifie que le client voulais des chaussures de
-	 * bowling et qu'il n'y en à plus
+	 * bowling et qu'il n'y en ï¿½ plus
 	 *
 	 * */
 	protected boolean emplSwitchChaussure(Client cl) {
 		if (cl.getChaussure().isBowling()) {
+			nbA++;
+			//System.out.println("aaaa"+nbA);
 			return changeBtoV(cl);
 		} else {
+			nbB++;
+			//System.out.println("bbbbbb"+nbB);
 			return changeVtoB(cl);
 		}
 	}
