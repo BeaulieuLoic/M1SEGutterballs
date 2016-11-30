@@ -15,11 +15,12 @@ public class GuichetStockChaussure {
 	}
 	
 
-	public synchronized void switchChaussure(Client cl){
+	/**
+	 *
+	 * */
+	public void switchChaussure(Client cl){
 		Chaussure chaussureAvant = cl.getChaussure();
-		//switchChaussure renvoi true si le client a changer de chaussure
 		while(chaussureAvant == cl.getChaussure()){
-			employe.attendreFinParcours();
 			listMonitor.get(cl.getPriorite()).switchChaussure(cl);
 		}
 	}

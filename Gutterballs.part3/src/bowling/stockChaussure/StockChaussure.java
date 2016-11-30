@@ -18,58 +18,61 @@ public class StockChaussure {
 		listeChaussureCLient = new HashMap<>();
 		listChaussureBowling = new LinkedList<>();
 
-		for (int i = 0; i < Main.nbPiste * Groupe.nbMaxClient; i++) {
+		for (int i = 0; i < Groupe.nbMaxClient; i++) {
 			listChaussureBowling.add(new Chaussure());
 		}
-		
-		
 	}
-
 	
+	public int getNbChaussureBowling(){
+		return listChaussureBowling.size();
+	}
 
 	/**
 	 * Change le type des chaussures du client. Ville vers bowling.
 	 * 
 	 */
 	private boolean changeVtoB(Client cl) {
-		if (listChaussureBowling.size() == 0) {
-			return false;// utilsé pour faire attendre le client lorsqu'il n'y à
-							// plus de chaussure de bowling
-			
+		
+		if(listChaussureBowling.size() == 0){
+			return false;
 		}
-
+		
+		
 		listeChaussureCLient.put(cl, cl.getChaussure());
-		cl.setChaussure(new Chaussure());// pour la v3 prendre une chaussure
+		cl.setChaussure(listChaussureBowling.get(0));// pour la v3 prendre une chaussure
 											// dans la liste, ou attendre s'il
 											// n'y en a plus
+		listChaussureBowling.remove(0);
 
 		try {
-			Thread.sleep(100);
+			Thread.sleep(Main.dureeChausse);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
 		return true;
-
 	}
 
 	/**
 	 * Change le type des chaussures du client. Bowling vers Ville.
 	 */
-	private void changeBtoV(Client cl) {
+	private boolean changeBtoV(Client cl) {
 		if (listeChaussureCLient.size() == 0) {
 			System.out
 					.println("!!!!! Erreur changeBtoV plus de chaussure de client !!!!!");
 		}else{
-			cl.setChaussure(listeChaussureCLient.get(cl));
 			listChaussureBowling.add(cl.getChaussure());
+			cl.setChaussure(listeChaussureCLient.get(cl));
+			
 			try {
-				Thread.sleep(100);
+				Thread.sleep(Main.dureeChausse);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
+		return true;
 	}
 
 	/**
@@ -82,8 +85,7 @@ public class StockChaussure {
 	 * */
 	protected boolean emplSwitchChaussure(Client cl) {
 		if (cl.getChaussure().isBowling()) {
-			changeBtoV(cl);
-			return true;
+			return changeBtoV(cl);
 		} else {
 			return changeVtoB(cl);
 		}

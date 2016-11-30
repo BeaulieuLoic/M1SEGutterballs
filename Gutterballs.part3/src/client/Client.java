@@ -23,7 +23,7 @@ public class Client extends Thread {
 	private boolean isReady;
 	private boolean asPayed;
 
-	private GuichetStockChaussure stockChaussure;
+	private GuichetStockChaussure guichetChaussure;
 	private PisteJeu pisteJeu;
 	private SalleDanse salleDanse;
 	private Bowling bowling;
@@ -38,7 +38,7 @@ public class Client extends Thread {
 		isReady = false;
 		asPayed = false;
 
-		stockChaussure = stock;
+		guichetChaussure = stock;
 		bowling = bl;
 	}
 
@@ -95,7 +95,7 @@ public class Client extends Thread {
 		if(chaussure.isBowling()){
 			return PrioriteChaussureMonitor.prioMax;
 		}else if(groupe.nbClientGetChaussureBowling() >= 1){
-			return PrioriteChaussureMonitor.prioIntermediaire;
+			return PrioriteChaussureMonitor.prioInt;
 		}else{
 			return PrioriteChaussureMonitor.prioMin;
 		}
@@ -120,7 +120,7 @@ public class Client extends Thread {
 		}
 
 		// go to salle des chaussures
-		stockChaussure.switchChaussure(this); // se chausse
+		guichetChaussure.switchChaussure(this); // se chausse
 
 		groupe.waitAllHaveShoe(this);
 		if (afficherClient) {
@@ -168,7 +168,10 @@ public class Client extends Thread {
 		}
 
 		// go to salle des chaussures
-		stockChaussure.switchChaussure(this);
+		
+		guichetChaussure.switchChaussure(this);
+		System.out.println("zzzzz");
+
 		
 		if (chaussure.getId() != id) {
 			System.out.println("!!!!! Erreur chaussure du client != this.id !!!!!");

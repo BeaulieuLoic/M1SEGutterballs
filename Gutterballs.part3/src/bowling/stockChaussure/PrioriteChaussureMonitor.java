@@ -1,72 +1,60 @@
 package bowling.stockChaussure;
 
+import java.util.LinkedList;
+import java.util.List;
 
+import client.Chaussure;
 import client.Client;
 
-
 public class PrioriteChaussureMonitor {
+	public static final int prioMax = 0;//bowling to ville
+	public static final int prioInt = 1;//1 client du groupe à déja bowling
+	public static final int prioMin = 2;
 	
-	private int priorite;
-	protected StockChaussure stockChaussure;
+	private int prio;
+	private StockChaussure stock;
+	private List<Client> listeClient;
+	EmployerChaussure employe;
 	
-	public static final int prioMin = 0;
-	// 0 = client qui veut des chaussure bowling mais dont personne dans son groupe n'à de chaussure
-	public static final int prioIntermediaire = 1;
-	// 1 = client qui veut des chaussure bowling et dont une personne de son groupe en possède
-	public static final int prioMax = 2;
-	// 2 = client qui veut rendre ces chaussure de bowling
 	
-	private Client clientAChanger;
-	
-	protected EmployerChaussure employe;
-	
-	public PrioriteChaussureMonitor(int prio, StockChaussure sc, EmployerChaussure e){
-		priorite = prio;
-		stockChaussure = sc;
+	public PrioriteChaussureMonitor(int p, StockChaussure sc, EmployerChaussure e){
+		prio = p;
+		stock = sc;
+		listeClient = new LinkedList<>();
 		employe = e;
 	}
 	
-	public boolean gotClient(){
-		return clientAChanger != null;
-	}
-	
-	
-	
 	public synchronized void switchChaussure(Client cl){
-		//1er arrivé, 1er servi
-		if (clientAChanger == null) {
-			clientAChanger = cl;
-			employe.wakeUpEmployer();// nouveau client arrivé
+		listeClient.add(cl);
+		int prioAvant = cl.getPriorite();
+		Chaussure chaussureAvant = cl.getChaussure();
+		employe.wakeUpEmployer();		
+		while(chaussureAvant == cl.getChaussure() && prioAvant == cl.getPriorite()){
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
-		try {
-			wait();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// le client n'a pas forcément changer de chaussure mais va peut etre changer de priorité donc retour à switchChaussure de la classe EmployerChaussure
-		// qui va déterminé si le client va changer sa priorité.
+		listeClient.remove(cl);
 	}
 	
-	
-	
-	// si la fonction return false, cela signifie que le client voulais des chaussures de bowling et qu'il n'y en à plus
-	public synchronized boolean switchChaussureClientAct(){
-		if (!gotClient()) {
-			return true;
-		}
+	public synchronized void switchCurrentClientChaussure(){
 		
-		boolean aRetourner = stockChaussure.emplSwitchChaussure(clientAChanger);
-		
-		// rien à faire car plus de chaussure de bowling et donc pas la peine de reveiller les clients qui demandes des chaussures de bowling
-		if (aRetourner) {
-			clientAChanger = null;
+		if (prio == prioMin) {
+			// lorsque la priorité est minimal, on s'occupe d'un par un des client car leurs priorité peuvent changer
+			stock.emplSwitchChaussure(listeClient.get(0));
 			notifyAll();
+		}else{
+			for (Client client : listeClient) {
+				if(stock.emplSwitchChaussure(client)){
+					notifyAll();
+				}else{
+					
+					break;
+				}	
+			}
 		}
-		return aRetourner;
-	}
-	
-
-
+	}	
 }

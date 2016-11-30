@@ -23,9 +23,13 @@ public class Main {
 	public static final int nbGuichetier = 3;
 	public static final int nbPiste = 3;
 	public static final int nbGroupe = 10;
-	public static final int nbClientGrp = 10;
+	public static final int nbClientGrp = 5;
 	public static final boolean afficheMsgClient = false;
-	public static final int dureePartie = 1000;//ms
+	
+	public static final int dureePartie = 500;//ms
+	public static final int dureePayement = 50;
+	public static final int dureeChausse = 10;
+	
 	
 	
 	//nb client = nbGroupe * nbClientGrp
@@ -82,14 +86,9 @@ public class Main {
 			client.start();			
 		}
 		
-
-		
-		int acc = 0;
 		for (Client client : lc) {
 			try {
-				acc++;
 				client.join();
-				//System.out.println("proc client finit : "+acc+"/"+nbClientGrp*nbGroupe);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

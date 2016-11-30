@@ -1,6 +1,7 @@
 package bowling.guichet;
 
 import client.Client;
+import Main.Main;
 
 public class Guichetier extends Thread {
 	
@@ -20,7 +21,7 @@ public class Guichetier extends Thread {
 				cl.setPayed(true);
 				//fait payer le client
 				try {
-					Thread.sleep(150);
+					Thread.sleep(Main.dureePayement);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
