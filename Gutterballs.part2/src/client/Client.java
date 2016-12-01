@@ -1,7 +1,7 @@
 package client;
 
-import java.util.List;
 
+import Main.Main;
 import bowling.Bowling;
 import bowling.PisteJeu;
 import bowling.SalleDanse;
@@ -87,7 +87,7 @@ public class Client extends Thread {
 	}
 
 	public void run() {
-		boolean afficherClient = false;
+		boolean afficherClient = Main.afficheMsgClient;
 
 		if (afficherClient) {
 
@@ -103,6 +103,13 @@ public class Client extends Thread {
 		}
 
 		// go to salle des chaussures
+		
+		try {
+			Thread.sleep(Main.dureeGoToSalleDanse);// go to
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		stockChaussure.changeVtoB(this); // se chausse
 
 		groupe.waitAllHaveShoe(this);
@@ -111,6 +118,12 @@ public class Client extends Thread {
 		}
 
 		// go to salle de danse et attend que tout les membres du groupe y soit
+		try {
+			Thread.sleep(Main.dureeGoToSalleDanse);// go to
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		groupe.waitGroupeSalleDanse(this);
 

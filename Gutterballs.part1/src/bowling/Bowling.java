@@ -41,7 +41,7 @@ public class Bowling extends Thread{
 	}
 	
 	
-	public synchronized String getStat(){
+	public String getStat(){
 		String aRetourner = "";
 		int acc = 0;
 		for (PisteJeu pisteJeu : listPisteJeu) {

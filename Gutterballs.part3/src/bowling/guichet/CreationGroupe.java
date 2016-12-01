@@ -19,12 +19,7 @@ public class CreationGroupe {
 
 		groupeEncoursCreation.addClient(client);
 		client.setGroupe(groupeEncoursCreation);
-		try {
-			Thread.sleep(Main.dureeCreationGroupe);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
 
 		if (groupeEncoursCreation.isFull()) {
 			System.out.println(groupeEncoursCreation + " à finit d'�tre cr��.");

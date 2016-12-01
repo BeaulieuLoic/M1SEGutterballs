@@ -28,7 +28,7 @@ public class SalleDanse {
 	}
 
 	public synchronized boolean reserverPiste(Groupe grp) {
-		
+		// ajoute le groupe seulement s'il est arrivé en 1er parmis les groupe dans la salle
 		if (grp.equals(listGroupe.get(0))) {
 			PisteJeu piste = bowling.getPisteLibre();
 			if (piste != null) {

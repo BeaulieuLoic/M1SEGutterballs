@@ -15,13 +15,13 @@ public class PisteJeu {
 	}
 
 	@Override
-	public String toString() {
+	public synchronized String toString() {
 		return "PisteJeu [id=" + id + ", nombre de partie jouée =" + nbPartieJouer + "]";
 	}
 
 	public void lancerPartie() {
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(Main.Main.dureePartie);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

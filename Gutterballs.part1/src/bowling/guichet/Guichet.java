@@ -15,12 +15,14 @@ public class Guichet {
 		groupe = new Groupe(nbGrp, salleDanse);
 	}
 
+	/**
+	 * Ajoute le client dans le groupe est cours de création
+	 * */
 	public synchronized void addToGroup(Client client) {
-
 		groupe.addClient(client);
 		client.setGroupe(groupe);
 		try {
-			Thread.sleep(50);
+			Thread.sleep(Main.Main.dureeCreationGroupe);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -33,9 +35,10 @@ public class Guichet {
 		}
 	}
 
+	
 	public synchronized void fairePayerClient(Client cl) {
 		try {
-			Thread.sleep(10);
+			Thread.sleep(Main.Main.dureePayement);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

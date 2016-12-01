@@ -5,6 +5,7 @@ import bowling.PisteJeu;
 import bowling.SalleDanse;
 import bowling.guichet.Guichet;
 import bowling.stockChaussure.StockChaussure;
+import Main.Main;
 
 public class Client extends Thread {
 
@@ -71,7 +72,7 @@ public class Client extends Thread {
 	}
 
 	public void run() {
-		boolean afficherClient = false;
+		boolean afficherClient = Main.afficheMsgClient;
 
 		if (afficherClient) {
 			System.out.println(this + "-> Guichet");
@@ -95,6 +96,13 @@ public class Client extends Thread {
 		}
 
 		// go to salle de danse et attend que tout les membres du groupe y soit
+		try {
+			Thread.sleep(Main.dureeGoToSalleDanse);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		groupe.waitGroupeSalleDanse(this);
 
@@ -111,6 +119,12 @@ public class Client extends Thread {
 			System.out.println(this + " " + groupe + "  piste de jeu trouver. -> go to pisteDeJeux");
 		}
 
+		try {
+			Thread.sleep(Main.dureeGoToPiste);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// attendre que son groupe soit au complet sur la piste puis joue
 		pisteJeu.waitGroupeAndPlay(groupe, this);

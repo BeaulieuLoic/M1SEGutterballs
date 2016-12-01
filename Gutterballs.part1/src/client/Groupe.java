@@ -8,7 +8,7 @@ import bowling.SalleDanse;
 
 public class Groupe {
 
-	public static final int nbMaxClient = 3;
+	public static final int nbMaxClient = Main.Main.nbClientGrp;
 
 	private int id;
 	private List<Client> listeClient;
@@ -75,6 +75,9 @@ public class Groupe {
 		return pisteDeJeuAttribuer;
 	}
 
+	/**
+	 * demande à un membre du groupe d'aller prévenir le bowling
+	 * */
 	public synchronized void prevenirPartieFinit() {
 		listeClient.get(0).prevenirBowlingPartieFinit();
 	}

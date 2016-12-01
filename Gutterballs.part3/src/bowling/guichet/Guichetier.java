@@ -27,6 +27,13 @@ public class Guichetier extends Thread {
 					e.printStackTrace();
 				}
 			}else{
+				
+				try {
+					Thread.sleep(Main.dureeCreationGroupe);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				cGroupe.addToGroup(cl);
 			}
 			guichet.wakeUpClient();

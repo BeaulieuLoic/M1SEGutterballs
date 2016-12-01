@@ -23,14 +23,14 @@ public class StockChaussure {
 			cl.setChaussure(new Chaussure());// pour la v3 prendre une chaussure dans la liste, ou attendre s'il n'y en a plus
 			
 			try {
-				Thread.sleep(100);
+				Thread.sleep(Main.Main.dureeChausse);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
 		}else{
-			System.out.println("Erreur stockChaussure, le client veut prendre des chaussures de bowling alors qu'il n'a pas de chaussure de ville");
+			System.out.println("!!!!! Erreur stockChaussure, le client veut prendre des chaussures de bowling alors qu'il n'a pas de chaussure de ville !!!!!");
 		}
 	}
 	/**
@@ -41,14 +41,14 @@ public class StockChaussure {
 		if (cl.getChaussure().isBowling()) {
 			cl.setChaussure(listeChaussureCLient.get(cl));
 			try {
-				Thread.sleep(100);
+				Thread.sleep(Main.Main.dureeChausse);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
 		}else{
-			System.out.println("Erreur stockChaussure, le client veut prendre des chaussures de ville alors qu'il n'a pas de chaussure de bowling");
+			System.out.println("!!!!! Erreur stockChaussure, le client veut prendre des chaussures de ville alors qu'il n'a pas de chaussure de bowling !!!!!");
 		}
 	}
 	

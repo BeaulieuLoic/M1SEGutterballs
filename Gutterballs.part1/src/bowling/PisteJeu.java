@@ -15,13 +15,13 @@ public class PisteJeu {
 	}
 
 	@Override
-	public String toString() {
+	public synchronized String toString() {
 		return "PisteJeu [id=" + id + ", nombre de partie jouée =" + nbPartieJouer + "]";
 	}
 
 	public void lancerPartie() {
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(Main.Main.dureePartie);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,6 +36,9 @@ public class PisteJeu {
 		groupe = grp;
 	}
 
+	/**
+	 * pas de synchro car utilisé uniquement lors de l'affichage des stats
+	 * */
 	public int getNbPartieJouer() {
 		return nbPartieJouer;
 	}
@@ -52,8 +55,7 @@ public class PisteJeu {
 
 		// tout le groupe est arrivé, lancement de la partie, termine la partie,
 		// prévient le bowling et reveil tout les client
-		// seul 1 thread rentre dedans car partieTermine() va metre à null le
-		// groupe actuel de la piste
+		// le dernier client arrivé lance la partie
 		if (!grp.isAllReady()) {
 			try {
 				wait();

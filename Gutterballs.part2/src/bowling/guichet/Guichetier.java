@@ -15,20 +15,29 @@ public class Guichetier extends Thread {
 	
 	public void run(){
 		while(true){
-			Client cl = guichet.getClient();
+			Client cl = guichet.getClient();//wait s'il n'y à pas de client
+			
+			//demande au client s'il souhaite payer ou rejoindre un groupe
 			if(cl.gotGroupe()){
 				cl.setPayed(true);
 				//fait payer le client
 				try {
-					Thread.sleep(150);
+					Thread.sleep(Main.Main.dureePayement);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}else{
+				
+				try {
+					Thread.sleep(Main.Main.dureeCreationGroupe);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				cGroupe.addToGroup(cl);
 			}
-			guichet.wakeUpClient();
+			guichet.wakeUpClient();// réveil les clients qui sont attende guichet
 		}
 	}
 }

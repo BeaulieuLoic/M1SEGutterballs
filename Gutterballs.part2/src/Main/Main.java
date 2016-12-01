@@ -21,8 +21,16 @@ public class Main {
 	public static final int nbGuichetier = 3;
 	public static final int nbPiste = 3;
 	public static final int nbGroupe = 10;
-	public static final int nbClientGrp = 3;
+	public static final int nbClientGrp =5;
+	public static final boolean afficheMsgClient = false;
 	
+	public static final int dureePartie = 500;//ms
+	public static final int dureePayement = 50;
+	public static final int dureeChausse = 50;
+	public static final int dureeCreationGroupe = 500;
+	
+	public static final int dureeGoToSalleDanse = 100;
+	public static final int dureeGoToPiste = 100;	
 	
 	
 

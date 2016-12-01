@@ -39,7 +39,6 @@ public class Groupe {
 		}
 	}
 	
-	
 	public synchronized int nbClientGetChaussureBowling(){
 		int acc = 0;
 		for (Client client : listeClient) {
@@ -79,7 +78,10 @@ public class Groupe {
 		return true;
 	}
 
-	public synchronized String toString() {
+	/**
+	 * pas de synchro car id n'est modifié qu'une fois
+	 * */
+	public String toString() {
 		return "grp [id=" + id + "]";
 
 	}
@@ -88,7 +90,10 @@ public class Groupe {
 		return pisteDeJeuAttribuer;
 	}
 
-	public synchronized void prevenirPartieFinit() {
+	/**
+	 * charge 1 client de prévenir le bowling que la piste de jeu est disponible
+	 * */
+	public void prevenirPartieFinit() {
 		listeClient.get(0).prevenirBowlingPartieFinit();
 	}
 
@@ -138,7 +143,7 @@ public class Groupe {
 
 		} else {
 
-			System.out.println(this + " est chaussÃ©.");
+			System.out.println(this + " est chaussé.");
 			setAllIsReady(false);
 			notifyAll();
 

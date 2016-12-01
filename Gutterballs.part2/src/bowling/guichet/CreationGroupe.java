@@ -14,19 +14,16 @@ public class CreationGroupe {
 		salleDanse = s;
 	}
 	
+	/**
+	 * Ajoute un client dans le groupe qui est en cours de création
+	 * */
 	public synchronized void addToGroup(Client client) {
-
 		groupeEncoursCreation.addClient(client);
 		client.setGroupe(groupeEncoursCreation);
-		try {
-			Thread.sleep(150);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 
+		
 		if (groupeEncoursCreation.isFull()) {
-			System.out.println(groupeEncoursCreation + " Ã  finit d'être créé.");
+			System.out.println(groupeEncoursCreation + " à  finit d'être créé.");
 			nbGrp++;
 			groupeEncoursCreation = new Groupe(nbGrp, salleDanse);
 		}

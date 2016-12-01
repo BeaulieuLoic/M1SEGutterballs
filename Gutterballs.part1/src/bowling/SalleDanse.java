@@ -27,6 +27,9 @@ public class SalleDanse {
 		}
 	}
 
+	/**
+	 * Demande si une piste est disponible, s'il y en à une la réserve et renvoi true. sinon false
+	 * */
 	public synchronized boolean reserverPiste(Groupe grp) {
 		PisteJeu piste = bowling.getPisteLibre();
 		if (piste != null) {
@@ -39,6 +42,9 @@ public class SalleDanse {
 		}
 	}
 
+	/**
+	 * Attend qu'une piste ce libère tant que le groupe n'a pas de piste de jeu
+	 * */
 	public synchronized void waitPisteDispo(Groupe grp) {
 		while (!(grp.gotPisteJeu())) {
 			// demande si une piste est dispo, si oui la réserve directement
@@ -55,6 +61,9 @@ public class SalleDanse {
 		}
 	}
 
+	/**
+	 * réveil tout les clients pour les prévenir qu'une piste est disponible
+	 * */
 	public synchronized void nouvellePisteDispo() {
 		notifyAll();
 	}
