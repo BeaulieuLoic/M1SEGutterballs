@@ -11,7 +11,6 @@ public class GuichetStockChaussure {
 	
 	public GuichetStockChaussure(EmployerChaussure e){
 		listMonitor = e.getListMonitor();
-		employe = e;
 	}
 	
 	/**

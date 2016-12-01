@@ -39,7 +39,10 @@ public class Groupe {
 		}
 	}
 	
-	public synchronized int nbClientGetChaussureBowling(){
+	/**
+	 * Pas synchrone car ne fait que des lectures. En revanche getChaussure() et setChaussure() de client est synchrone pour évité quelque problème
+	 * */
+	public int nbClientGetChaussureBowling(){
 		int acc = 0;
 		for (Client client : listeClient) {
 			if (client.getChaussure().isBowling()) {

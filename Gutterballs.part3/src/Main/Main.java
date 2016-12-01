@@ -2,6 +2,9 @@ package Main;
 
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,7 +25,7 @@ import client.Groupe;
 public class Main {
 	public static final int nbGuichetier = 3;
 	public static final int nbPiste = 3;
-	public static final int nbGroupe = 50;
+	public static final int nbGroupe = 10;
 	public static final int nbClientGrp =5;
 	public static final boolean afficheMsgClient = false;
 	
@@ -36,6 +39,20 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		try {
+			File file = new File("../fichierTraces/part3/nbGrp_"+nbGroupe+" nbClientGrp_"+nbClientGrp+" nbPiste_"+nbPiste+" .txt");
+			PrintStream printStream = new PrintStream(file);
+			System.setOut(printStream);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		System.out.println("Nombre de groupe : "+nbGroupe);
+		System.out.println("Nombre de client par groupe : "+nbClientGrp);
+		System.out.println("Nombre de piste : "+nbPiste);
+		System.out.println("---------------------------");
+		
 		
 		List<Client> lc = new LinkedList<>();
 		List<Guichetier> lGuichetier = new LinkedList<>();
@@ -47,7 +64,6 @@ public class Main {
 		StockChaussure stockChaussure = new StockChaussure();
 		EmployerChaussure empChaussure = new EmployerChaussure(stockChaussure);
 		GuichetStockChaussure guichetStockChaussure = new GuichetStockChaussure(empChaussure);
-		empChaussure.setGuichet(guichetStockChaussure);
 		
 		Bowling bowling = new Bowling(salleDanse);
 		salleDanse.setBowling(bowling);
@@ -93,6 +109,7 @@ public class Main {
 			}
 		}
 		
+		System.out.println("---------------------------");
 		System.out.println("Stat :");
 		System.out.println(bowling.getStat());
 

@@ -1,0 +1,411 @@
+Nombre de groupe : 10
+Nombre de client par groupe : 5
+Nombre de piste : 3
+---------------------------
+Client [id=0]-> Guichet
+Client [id=2]-> Guichet
+Client [id=1]-> Guichet
+Client [id=4]-> Guichet
+Client [id=3]-> Guichet
+Client [id=6]-> Guichet
+Client [id=5]-> Guichet
+Client [id=7]-> Guichet
+Client [id=8]-> Guichet
+Client [id=9]-> Guichet
+Client [id=10]-> Guichet
+Client [id=11]-> Guichet
+Client [id=12]-> Guichet
+Client [id=13]-> Guichet
+Client [id=14]-> Guichet
+Client [id=15]-> Guichet
+Client [id=17]-> Guichet
+Client [id=16]-> Guichet
+Client [id=19]-> Guichet
+Client [id=18]-> Guichet
+Client [id=20]-> Guichet
+Client [id=21]-> Guichet
+Client [id=22]-> Guichet
+Client [id=23]-> Guichet
+Client [id=24]-> Guichet
+Client [id=27]-> Guichet
+Client [id=25]-> Guichet
+Client [id=26]-> Guichet
+Client [id=28]-> Guichet
+Client [id=29]-> Guichet
+Client [id=31]-> Guichet
+Client [id=30]-> Guichet
+Client [id=36]-> Guichet
+Client [id=34]-> Guichet
+Client [id=32]-> Guichet
+Client [id=33]-> Guichet
+Client [id=44]-> Guichet
+Client [id=35]-> Guichet
+Client [id=37]-> Guichet
+Client [id=43]-> Guichet
+Client [id=40]-> Guichet
+Client [id=38]-> Guichet
+Client [id=42]-> Guichet
+Client [id=46]-> Guichet
+Client [id=45]-> Guichet
+Client [id=49]-> Guichet
+Client [id=41]-> Guichet
+Client [id=48]-> Guichet
+Client [id=39]-> Guichet
+Client [id=47]-> Guichet
+grp [id=0] � finit d'�tre cr��.
+Client [id=4] grp [id=0] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=1] grp [id=0] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=0] grp [id=0] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=2] grp [id=0] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=3] grp [id=0] à finit d'attendre dans Guichet. -> go StockChaussure 
+grp [id=0] est chaussé.
+Client [id=1] grp [id=0] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=4] grp [id=0] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=0] grp [id=0] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=3] grp [id=0] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=2] grp [id=0] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=0] est dans la salle de danse.
+Client [id=0] grp [id=0] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=4] grp [id=0] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=2] grp [id=0] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=3] grp [id=0] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=1] grp [id=0] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=0] grp [id=0]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=1] grp [id=0]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=2] grp [id=0]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=4] grp [id=0]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=3] grp [id=0]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=0] est dans pisteDeJeu. debut de la partie ...
+grp [id=0] partie finit. PisteJeu [id=0, nombre de partie jou�e =1]
+Client [id=3] grp [id=0] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=4] grp [id=0] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=0] grp [id=0] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=1] grp [id=0] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=2] grp [id=0] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+grp [id=1] � finit d'�tre cr��.
+Client [id=9] grp [id=1] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=7] grp [id=1] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=8] grp [id=1] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=6] grp [id=1] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=5] grp [id=1] à finit d'attendre dans Guichet. -> go StockChaussure 
+grp [id=1] est chaussé.
+Client [id=7] grp [id=1] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=6] grp [id=1] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=8] grp [id=1] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=9] grp [id=1] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=5] grp [id=1] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=1] est dans la salle de danse.
+Client [id=6] grp [id=1] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=9] grp [id=1] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=9] grp [id=1]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=8] grp [id=1] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=8] grp [id=1]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=5] grp [id=1] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=5] grp [id=1]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=7] grp [id=1] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=7] grp [id=1]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=6] grp [id=1]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=1] est dans pisteDeJeu. debut de la partie ...
+grp [id=2] � finit d'�tre cr��.
+Client [id=12] grp [id=2] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=11] grp [id=2] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=10] grp [id=2] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=13] grp [id=2] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=14] grp [id=2] à finit d'attendre dans Guichet. -> go StockChaussure 
+grp [id=2] est chaussé.
+Client [id=10] grp [id=2] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=14] grp [id=2] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=11] grp [id=2] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=12] grp [id=2] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=13] grp [id=2] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=1] partie finit. PisteJeu [id=0, nombre de partie jou�e =2]
+grp [id=2] est dans la salle de danse.
+Client [id=9] grp [id=1] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=13] grp [id=2] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=8] grp [id=1] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=13] grp [id=2]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=7] grp [id=1] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=6] grp [id=1] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=5] grp [id=1] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=12] grp [id=2] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=12] grp [id=2]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=11] grp [id=2] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=14] grp [id=2] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=11] grp [id=2]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=10] grp [id=2] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=10] grp [id=2]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=14] grp [id=2]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=2] est dans pisteDeJeu. debut de la partie ...
+grp [id=2] partie finit. PisteJeu [id=0, nombre de partie jou�e =3]
+Client [id=14] grp [id=2] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=10] grp [id=2] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=13] grp [id=2] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=11] grp [id=2] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=12] grp [id=2] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+grp [id=3] � finit d'�tre cr��.
+Client [id=20] grp [id=3] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=19] grp [id=3] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=17] grp [id=3] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=16] grp [id=3] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=15] grp [id=3] à finit d'attendre dans Guichet. -> go StockChaussure 
+grp [id=3] est chaussé.
+Client [id=17] grp [id=3] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=20] grp [id=3] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=16] grp [id=3] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=19] grp [id=3] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=15] grp [id=3] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=3] est dans la salle de danse.
+Client [id=20] grp [id=3] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=20] grp [id=3]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=17] grp [id=3] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=17] grp [id=3]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=19] grp [id=3] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=16] grp [id=3] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=16] grp [id=3]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=15] grp [id=3] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=15] grp [id=3]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=19] grp [id=3]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=3] est dans pisteDeJeu. debut de la partie ...
+grp [id=3] partie finit. PisteJeu [id=0, nombre de partie jou�e =4]
+Client [id=19] grp [id=3] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=15] grp [id=3] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=16] grp [id=3] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=17] grp [id=3] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=20] grp [id=3] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+grp [id=4] � finit d'�tre cr��.
+Client [id=24] grp [id=4] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=22] grp [id=4] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=23] grp [id=4] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=18] grp [id=4] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=21] grp [id=4] à finit d'attendre dans Guichet. -> go StockChaussure 
+grp [id=4] est chaussé.
+Client [id=18] grp [id=4] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=22] grp [id=4] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=21] grp [id=4] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=23] grp [id=4] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=24] grp [id=4] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=4] est dans la salle de danse.
+Client [id=18] grp [id=4] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=22] grp [id=4] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=21] grp [id=4] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=21] grp [id=4]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=24] grp [id=4] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=24] grp [id=4]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=23] grp [id=4] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=23] grp [id=4]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=18] grp [id=4]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=22] grp [id=4]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=4] est dans pisteDeJeu. debut de la partie ...
+grp [id=5] � finit d'�tre cr��.
+Client [id=29] grp [id=5] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=26] grp [id=5] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=28] grp [id=5] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=27] grp [id=5] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=25] grp [id=5] à finit d'attendre dans Guichet. -> go StockChaussure 
+grp [id=5] est chaussé.
+Client [id=28] grp [id=5] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=27] grp [id=5] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=25] grp [id=5] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=29] grp [id=5] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=26] grp [id=5] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=4] partie finit. PisteJeu [id=0, nombre de partie jou�e =5]
+Client [id=22] grp [id=4] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+grp [id=5] est dans la salle de danse.
+Client [id=24] grp [id=4] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=27] grp [id=5] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=23] grp [id=4] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=18] grp [id=4] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=27] grp [id=5]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=28] grp [id=5] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=28] grp [id=5]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=29] grp [id=5] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=29] grp [id=5]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=26] grp [id=5] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=25] grp [id=5] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=25] grp [id=5]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=21] grp [id=4] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=26] grp [id=5]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=5] est dans pisteDeJeu. debut de la partie ...
+grp [id=5] partie finit. PisteJeu [id=0, nombre de partie jou�e =6]
+Client [id=26] grp [id=5] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=25] grp [id=5] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=28] grp [id=5] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=29] grp [id=5] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=27] grp [id=5] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+grp [id=6] � finit d'�tre cr��.
+Client [id=34] grp [id=6] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=32] grp [id=6] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=30] grp [id=6] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=31] grp [id=6] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=36] grp [id=6] à finit d'attendre dans Guichet. -> go StockChaussure 
+grp [id=6] est chaussé.
+Client [id=34] grp [id=6] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=31] grp [id=6] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=32] grp [id=6] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=30] grp [id=6] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=36] grp [id=6] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=6] est dans la salle de danse.
+Client [id=30] grp [id=6] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=32] grp [id=6] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=31] grp [id=6] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=31] grp [id=6]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=34] grp [id=6] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=30] grp [id=6]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=34] grp [id=6]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=32] grp [id=6]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=36] grp [id=6] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=36] grp [id=6]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=6] est dans pisteDeJeu. debut de la partie ...
+grp [id=6] partie finit. PisteJeu [id=0, nombre de partie jou�e =7]
+Client [id=36] grp [id=6] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=32] grp [id=6] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=34] grp [id=6] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=31] grp [id=6] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=30] grp [id=6] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+grp [id=7] � finit d'�tre cr��.
+Client [id=43] grp [id=7] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=37] grp [id=7] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=33] grp [id=7] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=35] grp [id=7] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=44] grp [id=7] à finit d'attendre dans Guichet. -> go StockChaussure 
+grp [id=7] est chaussé.
+Client [id=43] grp [id=7] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=33] grp [id=7] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=44] grp [id=7] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=35] grp [id=7] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=37] grp [id=7] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=7] est dans la salle de danse.
+Client [id=37] grp [id=7] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=44] grp [id=7] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=35] grp [id=7] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=33] grp [id=7] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=43] grp [id=7] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=43] grp [id=7]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=37] grp [id=7]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=33] grp [id=7]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=35] grp [id=7]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=44] grp [id=7]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=7] est dans pisteDeJeu. debut de la partie ...
+grp [id=8] � finit d'�tre cr��.
+Client [id=45] grp [id=8] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=38] grp [id=8] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=40] grp [id=8] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=42] grp [id=8] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=46] grp [id=8] à finit d'attendre dans Guichet. -> go StockChaussure 
+grp [id=8] est chaussé.
+Client [id=38] grp [id=8] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=40] grp [id=8] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=42] grp [id=8] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=45] grp [id=8] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=46] grp [id=8] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=7] partie finit. PisteJeu [id=0, nombre de partie jou�e =8]
+Client [id=44] grp [id=7] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=35] grp [id=7] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=33] grp [id=7] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=37] grp [id=7] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=43] grp [id=7] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+grp [id=8] est dans la salle de danse.
+Client [id=42] grp [id=8] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=45] grp [id=8] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=46] grp [id=8] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=46] grp [id=8]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=40] grp [id=8] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=40] grp [id=8]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=45] grp [id=8]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=42] grp [id=8]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=38] grp [id=8] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=38] grp [id=8]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=8] est dans pisteDeJeu. debut de la partie ...
+Client [id=3] a finit de payer -> go StockChaussure
+Client [id=4] a finit de payer -> go StockChaussure
+Client [id=0] a finit de payer -> go StockChaussure
+Client [id=1] a finit de payer -> go StockChaussure
+Client [id=2] a finit de payer -> go StockChaussure
+Client [id=9] a finit de payer -> go StockChaussure
+Client [id=8] a finit de payer -> go StockChaussure
+Client [id=7] a finit de payer -> go StockChaussure
+Client [id=6] a finit de payer -> go StockChaussure
+grp [id=8] partie finit. PisteJeu [id=0, nombre de partie jou�e =9]
+Client [id=38] grp [id=8] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=42] grp [id=8] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=45] grp [id=8] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=40] grp [id=8] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=46] grp [id=8] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=5] a finit de payer -> go StockChaussure
+Client [id=14] a finit de payer -> go StockChaussure
+grp [id=9] � finit d'�tre cr��.
+Client [id=13] a finit de payer -> go StockChaussure
+Client [id=10] a finit de payer -> go StockChaussure
+Client [id=47] grp [id=9] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=49] grp [id=9] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=41] grp [id=9] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=48] grp [id=9] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=39] grp [id=9] à finit d'attendre dans Guichet. -> go StockChaussure 
+Client [id=11] a finit de payer -> go StockChaussure
+Client [id=19] a finit de payer -> go StockChaussure
+Client [id=12] a finit de payer -> go StockChaussure
+Client [id=15] a finit de payer -> go StockChaussure
+Client [id=17] a finit de payer -> go StockChaussure
+Client [id=16] a finit de payer -> go StockChaussure
+Client [id=20] a finit de payer -> go StockChaussure
+Client [id=24] a finit de payer -> go StockChaussure
+Client [id=22] a finit de payer -> go StockChaussure
+Client [id=23] a finit de payer -> go StockChaussure
+Client [id=18] a finit de payer -> go StockChaussure
+Client [id=21] a finit de payer -> go StockChaussure
+Client [id=26] a finit de payer -> go StockChaussure
+Client [id=25] a finit de payer -> go StockChaussure
+Client [id=28] a finit de payer -> go StockChaussure
+Client [id=29] a finit de payer -> go StockChaussure
+Client [id=36] a finit de payer -> go StockChaussure
+Client [id=27] a finit de payer -> go StockChaussure
+Client [id=32] a finit de payer -> go StockChaussure
+Client [id=31] a finit de payer -> go StockChaussure
+Client [id=34] a finit de payer -> go StockChaussure
+Client [id=30] a finit de payer -> go StockChaussure
+Client [id=44] a finit de payer -> go StockChaussure
+Client [id=35] a finit de payer -> go StockChaussure
+Client [id=33] a finit de payer -> go StockChaussure
+Client [id=37] a finit de payer -> go StockChaussure
+Client [id=43] a finit de payer -> go StockChaussure
+Client [id=38] a finit de payer -> go StockChaussure
+Client [id=42] a finit de payer -> go StockChaussure
+Client [id=45] a finit de payer -> go StockChaussure
+Client [id=40] a finit de payer -> go StockChaussure
+Client [id=46] a finit de payer -> go StockChaussure
+grp [id=9] est chaussé.
+Client [id=49] grp [id=9] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=41] grp [id=9] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=48] grp [id=9] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=39] grp [id=9] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+Client [id=47] grp [id=9] à finit d'attendre dans stockChaussure. -> go SalleDeDanse
+grp [id=9] est dans la salle de danse.
+Client [id=48] grp [id=9] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=47] grp [id=9] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=48] grp [id=9]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=47] grp [id=9]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=49] grp [id=9] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=39] grp [id=9] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=39] grp [id=9]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=41] grp [id=9] à finit d'attendre son groupe dans salleDanse. -> attend piste de jeu
+Client [id=41] grp [id=9]  piste de jeu trouver. -> go to pisteDeJeux
+Client [id=49] grp [id=9]  piste de jeu trouver. -> go to pisteDeJeux
+grp [id=9] est dans pisteDeJeu. debut de la partie ...
+grp [id=9] partie finit. PisteJeu [id=0, nombre de partie jou�e =10]
+Client [id=49] grp [id=9] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=41] grp [id=9] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=39] grp [id=9] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=48] grp [id=9] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=47] grp [id=9] à finit d'attendre son groupe dans pisteJeux. -> joue une partie
+Client [id=39] a finit de payer -> go StockChaussure
+Client [id=41] a finit de payer -> go StockChaussure
+Client [id=49] a finit de payer -> go StockChaussure
+Client [id=48] a finit de payer -> go StockChaussure
+Client [id=47] a finit de payer -> go StockChaussure
+---------------------------
+Stat :
+PisteJeu [id=0, nombre de partie jou�e =10]
+PisteJeu [id=1, nombre de partie jou�e =0]
+PisteJeu [id=2, nombre de partie jou�e =0]
+Nombre total de partie jouer : 10
+

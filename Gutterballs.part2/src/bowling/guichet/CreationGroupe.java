@@ -9,6 +9,9 @@ public class CreationGroupe {
 	private Groupe groupeEncoursCreation;
 	private SalleDanse salleDanse;
 	
+	/**
+	 * SalleDanse utile uniquement pour le redonné au groupe créé
+	 * */
 	public CreationGroupe(SalleDanse s){
 		groupeEncoursCreation = new Groupe(nbGrp, s);
 		salleDanse = s;

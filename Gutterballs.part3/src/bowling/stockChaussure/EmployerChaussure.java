@@ -9,7 +9,6 @@ public class EmployerChaussure extends Thread {
 
 	private List<PrioriteChaussureMonitor> listMonitor;
 	
-	private GuichetStockChaussure guichetChaussure;
 	
 	private StockChaussure stock;
 	private boolean occuper = true;
@@ -71,10 +70,5 @@ public class EmployerChaussure extends Thread {
 		return listMonitor;
 	}
 	
-	/**
-	 * uniquemet dans main lors de l'init
-	 * */	
-	public void setGuichet(GuichetStockChaussure g){
-		guichetChaussure = g;
-	}
+
 }
