@@ -99,7 +99,7 @@ public class Client extends Thread {
 		groupe.waitGroupeFull(this);
 
 		if (afficherClient) {
-			System.out.println(this + " " + groupe + " Ã  finit d'attendre dans Guichet. -> go StockChaussure ");
+			System.out.println(this + " " + groupe + " à fini d'attendre dans Guichet. -> go StockChaussure ");
 		}
 
 		// go to salle des chaussures
@@ -114,7 +114,7 @@ public class Client extends Thread {
 
 		groupe.waitAllHaveShoe(this);
 		if (afficherClient) {
-			System.out.println(this + " " + groupe + " Ã  finit d'attendre dans stockChaussure. -> go SalleDeDanse");
+			System.out.println(this + " " + groupe + " à fini d'attendre dans stockChaussure. -> go SalleDeDanse");
 		}
 
 		// go to salle de danse et attend que tout les membres du groupe y soit
@@ -129,7 +129,7 @@ public class Client extends Thread {
 
 		if (afficherClient) {
 			System.out.println(
-					this + " " + groupe + " Ã  finit d'attendre son groupe dans salleDanse. -> attend piste de jeu");
+					this + " " + groupe + "à fini d'attendre son groupe dans salleDanse. -> attend piste de jeu");
 		}
 
 		// attends d'etre notifiÃ© par soit un membre de son groupe soit par le
@@ -137,7 +137,7 @@ public class Client extends Thread {
 		salleDanse.waitPisteDispo(groupe);
 
 		if (afficherClient) {
-			System.out.println(this + " " + groupe + "  piste de jeu trouver. -> go to pisteDeJeux");
+			System.out.println(this + " " + groupe + "  piste de jeu trouvée. -> go to pisteDeJeux");
 		}
 
 		// attendre que son groupe soit au complet sur la piste puis joue
@@ -145,7 +145,7 @@ public class Client extends Thread {
 
 		if (afficherClient) {
 			System.out.println(
-					this + " " + groupe + " Ã  finit d'attendre son groupe dans pisteJeux. -> joue une partie");
+					this + " " + groupe + " à fini d'attendre son groupe dans pisteJeux. -> joue une partie");
 		}
 
 		// Jouer :D (le dernier client arrivé dans pisteJeu lance la partie)
@@ -155,7 +155,7 @@ public class Client extends Thread {
 		payer();
 
 		if (afficherClient) {
-			System.out.println(this + " a finit de payer -> go StockChaussure");
+			System.out.println(this + " a fini de payer -> go StockChaussure");
 		}
 
 		// go to salle des chaussures

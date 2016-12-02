@@ -28,7 +28,7 @@ public class Groupe {
 	}
 
 	/**
-	 * Pas besoin de synchronized car la m√©thode n'est appel√© qu'une seule
+	 * Pas besoin de synchronized car la mÈthode n'est appelÈ qu'une seule
 	 * fois, lors de la cr√©ation des objets dans le main
 	 */
 	public void setPisteJeu(PisteJeu pisteJeu) {
@@ -128,7 +128,7 @@ public class Groupe {
 
 		} else {
 
-			System.out.println(this + " est chauss√©.");
+			System.out.println(this + " est chaussÈ.");
 			setAllIsReady(false);
 			notifyAll();
 

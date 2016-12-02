@@ -16,7 +16,7 @@ public class PisteJeu {
 
 	@Override
 	public synchronized String toString() {
-		return "PisteJeu [id=" + id + ", nombre de partie jouée =" + nbPartieJouer + "]";
+		return "PisteJeu [id=" + id + ", nombre de partie jouées =" + nbPartieJouer + "]";
 	}
 
 	public void lancerPartie() {
@@ -67,7 +67,7 @@ public class PisteJeu {
 			System.out.println(grp + " est dans pisteDeJeu. debut de la partie ...");
 			lancerPartie();
 			partieTermine();
-			System.out.println(grp + " partie finit. " + this);
+			System.out.println(grp + " partie finie. " + this);
 			grp.setAllIsReady(false);
 			notifyAll();
 		}

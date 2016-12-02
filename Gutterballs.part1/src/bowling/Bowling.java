@@ -49,7 +49,7 @@ public class Bowling extends Thread{
 			acc += pisteJeu.getNbPartieJouer();
 		}
 		
-		aRetourner += "Nombre total de partie jouer : "+ acc + "\n";
+		aRetourner += "Nombre total de partie jouées : "+ acc + "\n";
 		return aRetourner ;
 	}
 	

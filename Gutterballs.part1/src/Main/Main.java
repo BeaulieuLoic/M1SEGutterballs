@@ -6,7 +6,6 @@ import java.io.PrintStream;
 import java.util.LinkedList;
 
 import client.Client;
-import client.Groupe;
 import bowling.Bowling;
 import bowling.PisteJeu;
 import bowling.SalleDanse;
@@ -14,9 +13,9 @@ import bowling.guichet.Guichet;
 import bowling.stockChaussure.StockChaussure;
 
 public class Main {
-	public static final int nbPiste = 2;
-	public static final int nbGroupe = 3;
-	public static final int nbClientGrp = 5;
+	public static final int nbPiste = 5;
+	public static final int nbGroupe = 50;
+	public static final int nbClientGrp = 15;
 	public static final boolean afficheMsgClient = true;
 
 	public static final int dureePartie = 500;// ms

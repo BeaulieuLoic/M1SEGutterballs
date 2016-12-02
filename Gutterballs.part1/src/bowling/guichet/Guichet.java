@@ -29,7 +29,7 @@ public class Guichet {
 		}
 
 		if (groupe.isFull()) {
-			System.out.println(groupe + " Ã  finit d'être créé.");
+			System.out.println(groupe + " à finit d'être créé.");
 			nbGrp++;
 			groupe = new Groupe(nbGrp, salleDanse);
 		}

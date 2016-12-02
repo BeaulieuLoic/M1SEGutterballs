@@ -22,8 +22,8 @@ import bowling.stockChaussure.StockChaussure;
 
 public class Main {
 	public static final int nbGuichetier = 3;
-	public static final int nbPiste = 2;
-	public static final int nbGroupe = 5;
+	public static final int nbPiste = 5;
+	public static final int nbGroupe = 50;
 	public static final int nbClientGrp =5;
 	public static final boolean afficheMsgClient = true;
 	

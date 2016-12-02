@@ -26,7 +26,7 @@ public class CreationGroupe {
 
 		
 		if (groupeEncoursCreation.isFull()) {
-			System.out.println(groupeEncoursCreation + " à  finit d'être créé.");
+			System.out.println(groupeEncoursCreation + " à  finit d'être crée.");
 			nbGrp++;
 			groupeEncoursCreation = new Groupe(nbGrp, salleDanse);
 		}
